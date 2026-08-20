@@ -66,14 +66,23 @@ const DEFAULT_EN_TRANSLATIONS = {
     themeDark: "Dark",
     themeLight: "Light",
     glow: "Background Glow Effects",
-    searchHeader: "Search & Suggestions",
+    searchHeader: "Search",
     searchEngine: "Search Engine",
-    suggestions: "Show Search Suggestions",
     clockHeader: "Clock & Widgets",
     clock24h: "24-Hour Clock",
     clockSeconds: "Show Seconds",
     greeting: "Show Greeting",
     dateHeader: "Show Date Header"
+  },
+  apps: {
+    title: "My Apps",
+    searchPlaceholder: "Search apps...",
+    launch: "Launch",
+    viewSource: "Source",
+    refresh: "Refresh Apps",
+    noResults: "No apps found matching your search",
+    allRepos: "All Repositories",
+    countLabel: "apps"
   },
   footer: {
     focusSearch: "Focus search",
@@ -82,6 +91,8 @@ const DEFAULT_EN_TRANSLATIONS = {
   header: {
     themeToggle: "Toggle Theme",
     themeToggleAria: "Toggle Light/Dark Theme",
+    apps: "My Apps",
+    appsAria: "Open App Drawer",
     settings: "Settings",
     settingsAria: "Open Settings"
   }

@@ -42,6 +42,22 @@
         <div class="date-badge" id="current-date" data-i18n="general.today">Today</div>
       </div>
       <div class="nav-right">
+        <!-- App Launcher / Waffle Menu -->
+        <div class="apps-container" id="apps-container">
+          <button id="apps-drawer-btn" class="icon-btn waffle-btn" title="Apps" data-i18n-title="header.apps" aria-label="Open App Launcher" data-i18n-aria-label="header.appsAria" aria-haspopup="true" aria-expanded="false">
+            <img src="img/apps.svg" class="icon-img" width="20" height="20" alt="Apps">
+          </button>
+
+          <!-- App Launcher Popover -->
+          <div class="apps-popover" id="apps-popover" aria-hidden="true" role="dialog" aria-label="App Launcher">
+            <div class="apps-scrollable">
+              <div class="apps-grid" id="apps-grid">
+                <!-- Dynamically populated app tiles -->
+              </div>
+            </div>
+          </div>
+        </div>
+
         <button id="settings-btn" class="icon-btn" title="Settings" data-i18n-title="header.settings" aria-label="Open Settings" data-i18n-aria-label="header.settingsAria">
           <img src="img/settings.svg" class="icon-img" width="20" height="20" alt="Settings">
         </button>
@@ -72,9 +88,6 @@
             <button type="submit" class="submit-search-btn" aria-label="Search" data-i18n-aria-label="search.submit">
               <img src="img/arrow_forward.svg" class="icon-img submit-icon" width="20" height="20" alt="Search">
             </button>
-
-            <!-- Autosuggest Dropdown -->
-            <div class="search-suggestions-dropdown" id="search-suggestions" aria-hidden="true"></div>
           </div>
         </form>
       </section>
@@ -179,7 +192,7 @@
 
         <!-- Search Behavior -->
         <div class="settings-group">
-          <h4 data-i18n="settings.searchHeader">Search & Suggestions</h4>
+          <h4 data-i18n="settings.searchHeader">Search</h4>
           <div class="setting-row">
             <span data-i18n="settings.searchEngine">Search Engine</span>
             <div class="custom-dropdown" id="settings-engine-dropdown">
@@ -192,13 +205,6 @@
                 <!-- Dynamically populated options with favicons -->
               </div>
             </div>
-          </div>
-          <div class="setting-row">
-            <span data-i18n="settings.suggestions">Show Search Suggestions</span>
-            <label class="toggle-switch">
-              <input type="checkbox" id="toggle-suggestions" checked>
-              <span class="slider"></span>
-            </label>
           </div>
         </div>
 

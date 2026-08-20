@@ -4,13 +4,12 @@ An ultra-fast, lightweight, customizable, and privacy-respecting browser homepag
 
 ## Overview
 
-Homepage provides a clean, responsive new tab experience designed for speed and productivity. It features instant search provider switching, real-time query suggestions, quick access bookmark management, multiple themes, multilingual localization, keyboard shortcuts, and Progressive Web App (PWA) offline capabilities.
+Homepage provides a clean, responsive new tab experience designed for speed and productivity. It features instant search provider switching, quick access bookmark management, multiple themes, multilingual localization, keyboard shortcuts, and Progressive Web App (PWA) offline capabilities.
 
 ## Features
 
 - Fast and lightweight: Built with vanilla HTML, CSS, and modern JavaScript without heavy runtime frameworks.
 - Multiple search engines: Easily switch between privacy-focused and mainstream search engines (Startpage, DuckDuckGo, Brave Search, Google, Bing, Ecosia, Qwant).
-- Search autosuggestions: Live query suggestions with keyboard navigation and quick clearing.
 - Customizable shortcuts: Add, edit, remove, and reorder quick-access bookmarks with automatic favicon fetching or custom icons.
 - Digital clock and greeting: Time display supporting 12-hour and 24-hour formats, optional seconds, dynamic time-based greetings, and date badges.
 - Themes and visual effects: Dark mode, Light mode, and System Auto detection, along with toggleable background glow effects.
@@ -27,8 +26,7 @@ Homepage provides a clean, responsive new tab experience designed for speed and 
 | `1` - `9` | Launch bookmark shortcuts 1 through 9 |
 | `Alt + 1` - `9` | Launch bookmark shortcuts 1 through 9 (works even when search input is focused) |
 | `Escape` | Close open modals, dismiss context menus, or unfocus search input |
-| `Arrow Up` / `Arrow Down` | Navigate search autosuggestions |
-| `Enter` | Submit search or activate selected suggestion |
+| `Enter` | Submit search |
 
 ## Supported Search Engines
 
@@ -108,7 +106,7 @@ homepage/
 │   ├── clock.css               # Digital clock and greeting styles
 │   ├── modal.css               # Modal overlays and forms
 │   ├── responsive.css          # Breakpoints and responsive design
-│   ├── search.css              # Search bar and suggestion dropdown styles
+│   ├── search.css              # Search bar and input styling
 │   ├── settings.css            # Settings modal controls
 │   ├── styles.css              # Main stylesheet aggregator
 │   └── variables.css           # CSS custom properties and color palettes
@@ -119,7 +117,7 @@ homepage/
 │   ├── i18n.js                 # Localization engine and dictionary loader
 │   ├── modal.js                # Modal opening, closing, and focus trapping
 │   ├── pwa.js                  # Service worker registration and PWA logic
-│   ├── search.js               # Search handling and JSONP autosuggestions
+│   ├── search.js               # Search engine switching and URL execution
 │   ├── settings.js             # Settings configuration UI and events
 │   ├── shortcuts.js            # Global keyboard shortcut listeners
 │   ├── state.js                # State management and localStorage synchronization

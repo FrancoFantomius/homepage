@@ -52,6 +52,7 @@ async function build() {
     'bookmarks.css',
     'modal.css',
     'settings.css',
+    'apps.css',
     'responsive.css'
   ];
 
@@ -106,6 +107,7 @@ async function build() {
       'search.js',
       'modal.js',
       'settings.js',
+      'apps.js',
       'shortcuts.js',
       'pwa.js'
     ];

@@ -80,7 +80,6 @@ export const DEFAULT_CONFIG = {
   theme: 'auto', // 'auto' (syncs with browser/OS), 'dark', or 'light'
   language: 'auto', // 'auto' (browser language detection), or specific code e.g. 'en', 'it'
   searchEngine: 'startpage',
-  showSuggestions: true,
   is24Hour: true,
   showSeconds: false,
   showGreeting: true,

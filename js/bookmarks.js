@@ -52,29 +52,37 @@ export function openBookmarkContextMenu(e, bookmark) {
 
   const menu = document.createElement('div');
   menu.className = 'context-menu';
+  menu.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    evt.stopPropagation();
+  });
 
   const editBtn = document.createElement('button');
+  editBtn.type = 'button';
   editBtn.innerHTML = `
     <img src="img/edit.svg" class="icon-img" width="14" height="14" alt="${t('bookmarks.edit')}">
     <span>${t('bookmarks.edit')}</span>
   `;
-  editBtn.onclick = (evt) => {
+  editBtn.addEventListener('click', (evt) => {
+    evt.preventDefault();
     evt.stopPropagation();
     closeActiveContextMenu();
     openEditBookmarkModal(bookmark);
-  };
+  });
 
   const deleteBtn = document.createElement('button');
+  deleteBtn.type = 'button';
   deleteBtn.className = 'delete-btn';
   deleteBtn.innerHTML = `
     <img src="img/delete.svg" class="icon-img" width="14" height="14" alt="${t('bookmarks.delete')}">
     <span>${t('bookmarks.delete')}</span>
   `;
-  deleteBtn.onclick = (evt) => {
+  deleteBtn.addEventListener('click', (evt) => {
+    evt.preventDefault();
     evt.stopPropagation();
     closeActiveContextMenu();
     deleteBookmark(bookmark.id);
-  };
+  });
 
   menu.appendChild(editBtn);
   menu.appendChild(deleteBtn);
@@ -95,6 +103,21 @@ export function renderBookmarks() {
     card.className = 'bookmark-card';
     card.href = bm.url;
     card.setAttribute('data-id', bm.id);
+
+    // Prevent navigation if clicking inside context menu or menu trigger
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.bookmark-menu-trigger') || e.target.closest('.context-menu')) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    });
+
+    // Right-click context menu support
+    card.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openBookmarkContextMenu(e, bm);
+    });
 
     // Number badge for 1-9 keyboard shortcut
     if (index < 9) {

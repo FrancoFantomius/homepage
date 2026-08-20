@@ -45,14 +45,23 @@
     "themeDark": "ダーク",
     "themeLight": "ライト",
     "glow": "背景グロー効果",
-    "searchHeader": "検索とサジェスト",
+    "searchHeader": "検索",
     "searchEngine": "検索エンジン",
-    "suggestions": "検索候補を表示",
     "clockHeader": "時計とウィジェット",
     "clock24h": "24時間表示",
     "clockSeconds": "秒を表示",
     "greeting": "挨拶を表示",
     "dateHeader": "日付ヘッダーを表示"
+  },
+  "apps": {
+    "title": "マイアプリ",
+    "searchPlaceholder": "アプリを検索...",
+    "launch": "起動",
+    "viewSource": "ソース",
+    "refresh": "アプリを更新",
+    "noResults": "該当するアプリが見つかりません",
+    "allRepos": "すべてのリポジトリ",
+    "countLabel": "個のアプリ"
   },
   "footer": {
     "focusSearch": "検索にフォーカス",
@@ -61,6 +70,8 @@
   "header": {
     "themeToggle": "テーマを切り替え",
     "themeToggleAria": "ライト/ダークテーマを切り替え",
+    "apps": "マイアプリ",
+    "appsAria": "アプリドロワーを開く",
     "settings": "設定",
     "settingsAria": "設定を開く"
   }

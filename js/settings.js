@@ -7,7 +7,7 @@ import { openModal, closeModal } from './modal.js';
 import { applyTheme } from './theme.js';
 import { updateClockAndGreeting } from './clock.js';
 import { renderBookmarks } from './bookmarks.js';
-import { hideSuggestions, updateSearchEngineUI } from './search.js';
+import { updateSearchEngineUI } from './search.js';
 import { SUPPORTED_LANGUAGES, setLanguage, t, onLanguageChange, getResolvedLanguage, detectBrowserLanguage } from './i18n.js';
 
 const settingsBtn = document.getElementById('settings-btn');
@@ -26,7 +26,6 @@ const settingsLangTrigger = document.getElementById('settings-lang-trigger');
 const settingsLangName = document.getElementById('settings-lang-name');
 const settingsLangMenu = document.getElementById('settings-lang-menu');
 
-const toggleSuggestions = document.getElementById('toggle-suggestions');
 const toggleGlow = document.getElementById('toggle-glow');
 const toggle24h = document.getElementById('toggle-24h');
 const toggleSeconds = document.getElementById('toggle-seconds');
@@ -217,7 +216,6 @@ export function syncSettingsUI() {
     });
   }
 
-  if (toggleSuggestions) toggleSuggestions.checked = state.config.showSuggestions;
   if (toggleGlow) toggleGlow.checked = state.config.showGlow;
   if (toggle24h) toggle24h.checked = state.config.is24Hour;
   if (toggleSeconds) toggleSeconds.checked = state.config.showSeconds;
@@ -258,6 +256,8 @@ export function initSettings() {
 
   if (settingsBtn) {
     settingsBtn.addEventListener('click', () => {
+      const appsPopover = document.getElementById('apps-popover');
+      if (appsPopover) appsPopover.classList.remove('open');
       syncSettingsUI();
       openModal(settingsModal);
     });
@@ -320,16 +320,6 @@ export function initSettings() {
   }
 
   // Toggle switch listeners
-  if (toggleSuggestions) {
-    toggleSuggestions.addEventListener('change', () => {
-      state.config.showSuggestions = toggleSuggestions.checked;
-      saveConfig();
-      if (!state.config.showSuggestions) {
-        hideSuggestions();
-      }
-    });
-  }
-
   if (toggleGlow) {
     toggleGlow.addEventListener('change', () => {
       state.config.showGlow = toggleGlow.checked;

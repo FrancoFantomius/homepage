@@ -45,14 +45,23 @@
     "themeDark": "Dunkel",
     "themeLight": "Hell",
     "glow": "Hintergrund-Leuchteffekte",
-    "searchHeader": "Suche & Vorschläge",
+    "searchHeader": "Suche",
     "searchEngine": "Suchmaschine",
-    "suggestions": "Suchvorschläge anzeigen",
     "clockHeader": "Uhr & Widgets",
     "clock24h": "24-Stunden-Format",
     "clockSeconds": "Sekunden anzeigen",
     "greeting": "Begrüßung anzeigen",
     "dateHeader": "Datum in Kopfzeile anzeigen"
+  },
+  "apps": {
+    "title": "Meine Apps",
+    "searchPlaceholder": "Apps suchen...",
+    "launch": "Starten",
+    "viewSource": "Quellcode",
+    "refresh": "Apps aktualisieren",
+    "noResults": "Keine Apps gefunden",
+    "allRepos": "Alle Repositorien",
+    "countLabel": "Apps"
   },
   "footer": {
     "focusSearch": "Suche fokussieren",
@@ -61,6 +70,8 @@
   "header": {
     "themeToggle": "Design wechseln",
     "themeToggleAria": "Helles/Dunkles Design umschalten",
+    "apps": "Meine Apps",
+    "appsAria": "App-Menü öffnen",
     "settings": "Einstellungen",
     "settingsAria": "Einstellungen öffnen"
   }

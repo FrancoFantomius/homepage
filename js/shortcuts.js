@@ -5,19 +5,22 @@
 import { state } from './state.js';
 import { closeModal } from './modal.js';
 import { closeActiveContextMenu } from './bookmarks.js';
+import { closeAppsPopover } from './apps.js';
 
 export function initShortcuts() {
   const searchInput = document.getElementById('search-input');
   const bookmarkModal = document.getElementById('bookmark-modal');
   const settingsModal = document.getElementById('settings-modal');
+  const appsPopover = document.getElementById('apps-popover');
 
   window.addEventListener('keydown', (e) => {
     const isInputFocused = document.activeElement && ['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName);
 
-    // Escape key -> close modals, context menus or blur search
+    // Escape key -> close modals, popovers, context menus or blur search
     if (e.key === 'Escape') {
       if (bookmarkModal) closeModal(bookmarkModal);
       if (settingsModal) closeModal(settingsModal);
+      closeAppsPopover();
       closeActiveContextMenu();
       if (isInputFocused) {
         document.activeElement.blur();
@@ -38,9 +41,10 @@ export function initShortcuts() {
       }
     }
 
-    // If typing inside an input field or a modal is open, ignore subsequent shortcuts
+    // If typing inside an input field or a modal/popover is open, ignore subsequent shortcuts
     const isModalOpen = (bookmarkModal && bookmarkModal.classList.contains('open')) ||
-                        (settingsModal && settingsModal.classList.contains('open'));
+                        (settingsModal && settingsModal.classList.contains('open')) ||
+                        (appsPopover && appsPopover.classList.contains('open'));
 
     if (isInputFocused || isModalOpen) {
       return;

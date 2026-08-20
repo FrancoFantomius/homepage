@@ -45,14 +45,23 @@
     "themeDark": "Scuro",
     "themeLight": "Chiaro",
     "glow": "Effetti di luce soffusa",
-    "searchHeader": "Ricerca e Suggerimenti",
+    "searchHeader": "Ricerca",
     "searchEngine": "Motore di Ricerca",
-    "suggestions": "Mostra suggerimenti di ricerca",
     "clockHeader": "Orologio e Widget",
     "clock24h": "Orologio a 24 ore",
     "clockSeconds": "Mostra secondi",
     "greeting": "Mostra saluto",
     "dateHeader": "Mostra data nell'intestazione"
+  },
+  "apps": {
+    "title": "Le mie App",
+    "searchPlaceholder": "Cerca app...",
+    "launch": "Avvia",
+    "viewSource": "Sorgente",
+    "refresh": "Aggiorna App",
+    "noResults": "Nessuna app trovata",
+    "allRepos": "Tutti i Repository",
+    "countLabel": "app"
   },
   "footer": {
     "focusSearch": "Attiva ricerca",
@@ -61,6 +70,8 @@
   "header": {
     "themeToggle": "Cambia Tema",
     "themeToggleAria": "Attiva Tema Chiaro/Scuro",
+    "apps": "Le mie App",
+    "appsAria": "Apri Drawer delle App",
     "settings": "Impostazioni",
     "settingsAria": "Apri Impostazioni"
   }

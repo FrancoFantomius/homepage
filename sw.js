@@ -3,7 +3,7 @@
  * Provides offline support and local caching for application assets & favicons.
  */
 
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
 const CORE_CACHE = `homepage-core-${CACHE_VERSION}`;
 const FAVICON_CACHE = `homepage-favicons-${CACHE_VERSION}`;
 
@@ -21,6 +21,7 @@ const CORE_ASSETS = [
   './css/bookmarks.css',
   './css/modal.css',
   './css/settings.css',
+  './css/apps.css',
   './css/responsive.css',
   './js/state.js',
   './js/i18n.js',
@@ -30,10 +31,12 @@ const CORE_ASSETS = [
   './js/search.js',
   './js/modal.js',
   './js/settings.js',
+  './js/apps.js',
   './js/shortcuts.js',
   './js/pwa.js',
   './img/icon.svg',
   './img/add.svg',
+  './img/apps.svg',
   './img/arrow_forward.svg',
   './img/bookmark.svg',
   './img/check.svg',
@@ -41,7 +44,10 @@ const CORE_ASSETS = [
   './img/delete.svg',
   './img/edit.svg',
   './img/expand_more.svg',
+  './img/github.svg',
   './img/more_vert.svg',
+  './img/open_in_new.svg',
+  './img/refresh.svg',
   './img/search.svg',
   './img/settings.svg',
   './langs/en.json',
@@ -110,16 +116,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // 2. Ignore real-time search suggestion APIs (network only)
-  if (
-    url.hostname.includes('suggest') ||
-    url.hostname.includes('duckduckgo.com') && url.pathname.includes('/ac') ||
-    url.hostname.includes('startpage.com') && url.pathname.includes('/suggestions')
-  ) {
-    return;
-  }
-
-  // 3. Same-origin assets & local files (Stale-While-Revalidate / Cache-First)
+  // 2. Same-origin assets & local files (Stale-While-Revalidate / Cache-First)
   if (url.origin === location.origin) {
     event.respondWith(
       caches.open(CORE_CACHE).then(async (cache) => {

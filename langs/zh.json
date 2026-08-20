@@ -45,14 +45,23 @@
     "themeDark": "深色",
     "themeLight": "浅色",
     "glow": "背景光晕效果",
-    "searchHeader": "搜索与建议",
+    "searchHeader": "搜索",
     "searchEngine": "搜索引擎",
-    "suggestions": "显示搜索建议",
     "clockHeader": "时钟与小组件",
     "clock24h": "24小时制",
     "clockSeconds": "显示秒数",
     "greeting": "显示问候语",
     "dateHeader": "显示顶部日期"
+  },
+  "apps": {
+    "title": "我的应用",
+    "searchPlaceholder": "搜索应用...",
+    "launch": "打开",
+    "viewSource": "源码",
+    "refresh": "刷新应用",
+    "noResults": "未找到相关应用",
+    "allRepos": "所有仓库",
+    "countLabel": "个应用"
   },
   "footer": {
     "focusSearch": "聚焦搜索框",
@@ -61,6 +70,8 @@
   "header": {
     "themeToggle": "切换主题",
     "themeToggleAria": "切换浅色/深色主题",
+    "apps": "我的应用",
+    "appsAria": "打开应用抽屉",
     "settings": "设置",
     "settingsAria": "打开设置"
   }

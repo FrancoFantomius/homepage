@@ -45,14 +45,23 @@
     "themeDark": "Sombre",
     "themeLight": "Clair",
     "glow": "Effets de lueur d'arrière-plan",
-    "searchHeader": "Recherche et Suggestions",
+    "searchHeader": "Recherche",
     "searchEngine": "Moteur de recherche",
-    "suggestions": "Afficher les suggestions de recherche",
     "clockHeader": "Horloge et Widgets",
     "clock24h": "Horloge 24 heures",
     "clockSeconds": "Afficher les secondes",
     "greeting": "Afficher le message de salutation",
     "dateHeader": "Afficher la date dans l'en-tête"
+  },
+  "apps": {
+    "title": "Mes Applications",
+    "searchPlaceholder": "Rechercher des applications...",
+    "launch": "Lancer",
+    "viewSource": "Source",
+    "refresh": "Actualiser les applications",
+    "noResults": "Aucune application trouvée",
+    "allRepos": "Tous les dépôts",
+    "countLabel": "applications"
   },
   "footer": {
     "focusSearch": "Focus sur la recherche",
@@ -61,6 +70,8 @@
   "header": {
     "themeToggle": "Changer de thème",
     "themeToggleAria": "Basculer entre thème clair et sombre",
+    "apps": "Mes Applications",
+    "appsAria": "Ouvrir le tiroir d'applications",
     "settings": "Paramètres",
     "settingsAria": "Ouvrir les paramètres"
   }

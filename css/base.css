@@ -127,12 +127,10 @@ body {
 }
 
 .icon-btn {
-  background: var(--bg-surface);
+  background: transparent;
   color: var(--text-secondary);
-  border: 1px solid var(--card-border);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: var(--radius-md);
+  border: none;
+  border-radius: var(--radius-full);
   width: 40px;
   height: 40px;
   display: inline-flex;
@@ -142,10 +140,10 @@ body {
   transition: all var(--transition-speed) var(--transition-bounce);
 }
 
-.icon-btn:hover {
+.icon-btn:hover,
+.icon-btn[aria-expanded="true"] {
   background: var(--bg-surface-hover);
   color: var(--text-primary);
-  border-color: var(--card-border-hover);
   transform: translateY(-1px);
 }
 
@@ -162,7 +160,7 @@ body {
   transition: opacity var(--transition-speed) ease, filter var(--transition-speed) ease;
 }
 
-/* In light mode, Google SVGs are dark. In dark mode, invert so they render light */
+/* In light mode, SVGs are dark. In dark mode, invert so they render light */
 [data-theme="dark"] .icon-img {
   filter: invert(1) brightness(1.2);
 }

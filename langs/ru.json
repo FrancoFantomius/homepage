@@ -45,14 +45,23 @@
     "themeDark": "Темная",
     "themeLight": "Светлая",
     "glow": "Эффект свечения фона",
-    "searchHeader": "Поиск и подсказки",
+    "searchHeader": "Поиск",
     "searchEngine": "Поисковая система",
-    "suggestions": "Показывать поисковые подсказки",
     "clockHeader": "Часы и виджеты",
     "clock24h": "24-часовой формат",
     "clockSeconds": "Показывать секунды",
     "greeting": "Показывать приветствие",
     "dateHeader": "Показывать дату вверху"
+  },
+  "apps": {
+    "title": "Мои приложения",
+    "searchPlaceholder": "Поиск приложений...",
+    "launch": "Открыть",
+    "viewSource": "Исходный код",
+    "refresh": "Обновить приложения",
+    "noResults": "Приложения не найдены",
+    "allRepos": "Все репозитории",
+    "countLabel": "прил."
   },
   "footer": {
     "focusSearch": "Фокус на строке поиска",
@@ -61,6 +70,8 @@
   "header": {
     "themeToggle": "Сменить тему",
     "themeToggleAria": "Переключить светлую/темную тему",
+    "apps": "Мои приложения",
+    "appsAria": "Открыть меню приложений",
     "settings": "Настройки",
     "settingsAria": "Открыть настройки"
   }
