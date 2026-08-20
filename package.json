@@ -4,8 +4,7 @@
   "description": "Ultra-fast, customizable, privacy-respecting browser homepage",
   "type": "module",
   "scripts": {
-    "build": "node build.mjs",
-    "download-icons": "node download-icons.mjs"
+    "build": "node build.mjs"
   },
   "devDependencies": {
     "esbuild": "^0.28.2"
