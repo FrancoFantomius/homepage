@@ -1,0 +1,67 @@
+{
+  "general": {
+    "pageTitle": "Новая вкладка",
+    "today": "Сегодня"
+  },
+  "greetings": {
+    "morning": "Доброе утро",
+    "afternoon": "Добрый день",
+    "evening": "Добрый вечер",
+    "night": "Доброй ночи",
+    "welcome": "Добро пожаловать"
+  },
+  "search": {
+    "placeholder": "Поиск в {engine}",
+    "clear": "Очистить поиск",
+    "submit": "Искать"
+  },
+  "bookmarks": {
+    "quickAccess": "Быстрый доступ",
+    "addShortcut": "Добавить ярлык",
+    "editShortcut": "Редактировать ярлык",
+    "edit": "Редактировать",
+    "delete": "Удалить",
+    "title": "Название",
+    "titlePlaceholder": "например, Wikipedia",
+    "url": "URL",
+    "urlPlaceholder": "https://wikipedia.org",
+    "iconUrl": "URL иконки (необязательно)",
+    "iconUrlPlaceholder": "Оставьте пустым для авто-иконки",
+    "cancel": "Отмена",
+    "save": "Сохранить ярлык",
+    "saveChanges": "Сохранить изменения",
+    "shortcut": "Ярлык",
+    "optionsAria": "Параметры для {title}"
+  },
+  "settings": {
+    "title": "Настройки",
+    "close": "Закрыть",
+    "general": "Общие и язык",
+    "language": "Язык",
+    "languageAuto": "Авто ({lang})",
+    "appearance": "Внешний вид и тема",
+    "themeMode": "Режим темы",
+    "themeSystem": "Системная",
+    "themeDark": "Темная",
+    "themeLight": "Светлая",
+    "glow": "Эффект свечения фона",
+    "searchHeader": "Поиск и подсказки",
+    "searchEngine": "Поисковая система",
+    "suggestions": "Показывать поисковые подсказки",
+    "clockHeader": "Часы и виджеты",
+    "clock24h": "24-часовой формат",
+    "clockSeconds": "Показывать секунды",
+    "greeting": "Показывать приветствие",
+    "dateHeader": "Показывать дату вверху"
+  },
+  "footer": {
+    "focusSearch": "Фокус на строке поиска",
+    "launchShortcut": "Открыть ярлык"
+  },
+  "header": {
+    "themeToggle": "Сменить тему",
+    "themeToggleAria": "Переключить светлую/темную тему",
+    "settings": "Настройки",
+    "settingsAria": "Открыть настройки"
+  }
+}

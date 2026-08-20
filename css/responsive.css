@@ -1,0 +1,18 @@
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .app-container {
+    padding: 1rem;
+  }
+
+  .digital-clock {
+    font-size: 3.5rem;
+  }
+
+  .bookmarks-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-hint {
+    display: none;
+  }
+}

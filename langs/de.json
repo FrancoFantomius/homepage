@@ -1,0 +1,67 @@
+{
+  "general": {
+    "pageTitle": "Neuer Tab",
+    "today": "Heute"
+  },
+  "greetings": {
+    "morning": "Guten Morgen",
+    "afternoon": "Guten Tag",
+    "evening": "Guten Abend",
+    "night": "Gute Nacht",
+    "welcome": "Willkommen"
+  },
+  "search": {
+    "placeholder": "Auf {engine} suchen",
+    "clear": "Suche löschen",
+    "submit": "Suchen"
+  },
+  "bookmarks": {
+    "quickAccess": "Schnellzugriff",
+    "addShortcut": "Verknüpfung hinzufügen",
+    "editShortcut": "Verknüpfung bearbeiten",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "title": "Titel",
+    "titlePlaceholder": "z.B. Wikipedia",
+    "url": "URL",
+    "urlPlaceholder": "https://wikipedia.org",
+    "iconUrl": "Icon-URL (optional)",
+    "iconUrlPlaceholder": "Leer lassen für Auto-Favicon",
+    "cancel": "Abbrechen",
+    "save": "Verknüpfung speichern",
+    "saveChanges": "Änderungen speichern",
+    "shortcut": "Verknüpfung",
+    "optionsAria": "Optionen für {title}"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "close": "Schließen",
+    "general": "Allgemein & Sprache",
+    "language": "Sprache",
+    "languageAuto": "Automatisch ({lang})",
+    "appearance": "Erscheinungsbild & Design",
+    "themeMode": "Design-Modus",
+    "themeSystem": "System",
+    "themeDark": "Dunkel",
+    "themeLight": "Hell",
+    "glow": "Hintergrund-Leuchteffekte",
+    "searchHeader": "Suche & Vorschläge",
+    "searchEngine": "Suchmaschine",
+    "suggestions": "Suchvorschläge anzeigen",
+    "clockHeader": "Uhr & Widgets",
+    "clock24h": "24-Stunden-Format",
+    "clockSeconds": "Sekunden anzeigen",
+    "greeting": "Begrüßung anzeigen",
+    "dateHeader": "Datum in Kopfzeile anzeigen"
+  },
+  "footer": {
+    "focusSearch": "Suche fokussieren",
+    "launchShortcut": "Verknüpfung öffnen"
+  },
+  "header": {
+    "themeToggle": "Design wechseln",
+    "themeToggleAria": "Helles/Dunkles Design umschalten",
+    "settings": "Einstellungen",
+    "settingsAria": "Einstellungen öffnen"
+  }
+}

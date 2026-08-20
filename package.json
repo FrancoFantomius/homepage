@@ -1,0 +1,22 @@
+{
+  "name": "homepage",
+  "version": "1.0.0",
+  "description": "Ultra-fast, customizable, privacy-respecting browser homepage",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  },
+  "keywords": [
+    "homepage",
+    "startpage",
+    "pwa",
+    "newtab"
+  ],
+  "license": "MIT",
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  }
+}

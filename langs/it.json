@@ -1,0 +1,67 @@
+{
+  "general": {
+    "pageTitle": "Nuova scheda",
+    "today": "Oggi"
+  },
+  "greetings": {
+    "morning": "Buongiorno",
+    "afternoon": "Buon pomeriggio",
+    "evening": "Buonasera",
+    "night": "Buonanotte",
+    "welcome": "Benvenuto"
+  },
+  "search": {
+    "placeholder": "Cerca su {engine}",
+    "clear": "Cancella ricerca",
+    "submit": "Cerca"
+  },
+  "bookmarks": {
+    "quickAccess": "Accesso Rapido",
+    "addShortcut": "Aggiungi Scorciatoia",
+    "editShortcut": "Modifica Scorciatoia",
+    "edit": "Modifica",
+    "delete": "Elimina",
+    "title": "Titolo",
+    "titlePlaceholder": "es. Wikipedia",
+    "url": "URL",
+    "urlPlaceholder": "https://wikipedia.org",
+    "iconUrl": "URL Icona (opzionale)",
+    "iconUrlPlaceholder": "Lascia vuoto per favicon automatica",
+    "cancel": "Annulla",
+    "save": "Salva Scorciatoia",
+    "saveChanges": "Salva Modifiche",
+    "shortcut": "Scorciatoia",
+    "optionsAria": "Opzioni per {title}"
+  },
+  "settings": {
+    "title": "Impostazioni",
+    "close": "Chiudi",
+    "general": "Generale e Lingua",
+    "language": "Lingua",
+    "languageAuto": "Auto ({lang})",
+    "appearance": "Aspetto e Tema",
+    "themeMode": "Modalità Tema",
+    "themeSystem": "Sistema",
+    "themeDark": "Scuro",
+    "themeLight": "Chiaro",
+    "glow": "Effetti di luce soffusa",
+    "searchHeader": "Ricerca e Suggerimenti",
+    "searchEngine": "Motore di Ricerca",
+    "suggestions": "Mostra suggerimenti di ricerca",
+    "clockHeader": "Orologio e Widget",
+    "clock24h": "Orologio a 24 ore",
+    "clockSeconds": "Mostra secondi",
+    "greeting": "Mostra saluto",
+    "dateHeader": "Mostra data nell'intestazione"
+  },
+  "footer": {
+    "focusSearch": "Attiva ricerca",
+    "launchShortcut": "Avvia scorciatoia"
+  },
+  "header": {
+    "themeToggle": "Cambia Tema",
+    "themeToggleAria": "Attiva Tema Chiaro/Scuro",
+    "settings": "Impostazioni",
+    "settingsAria": "Apri Impostazioni"
+  }
+}

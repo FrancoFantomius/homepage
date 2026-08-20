@@ -1,0 +1,67 @@
+{
+  "general": {
+    "pageTitle": "Nova guia",
+    "today": "Hoje"
+  },
+  "greetings": {
+    "morning": "Bom dia",
+    "afternoon": "Boa tarde",
+    "evening": "Boa noite",
+    "night": "Boa noite",
+    "welcome": "Bem-vindo"
+  },
+  "search": {
+    "placeholder": "Pesquisar no {engine}",
+    "clear": "Limpar pesquisa",
+    "submit": "Pesquisar"
+  },
+  "bookmarks": {
+    "quickAccess": "Acesso Rápido",
+    "addShortcut": "Adicionar Atalho",
+    "editShortcut": "Editar Atalho",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "title": "Título",
+    "titlePlaceholder": "ex: Wikipedia",
+    "url": "URL",
+    "urlPlaceholder": "https://wikipedia.org",
+    "iconUrl": "URL do Ícone (opcional)",
+    "iconUrlPlaceholder": "Deixe em branco para favicon automático",
+    "cancel": "Cancelar",
+    "save": "Salvar Atalho",
+    "saveChanges": "Salvar Alterações",
+    "shortcut": "Atalho",
+    "optionsAria": "Opções para {title}"
+  },
+  "settings": {
+    "title": "Configurações",
+    "close": "Fechar",
+    "general": "Geral e Idioma",
+    "language": "Idioma",
+    "languageAuto": "Automático ({lang})",
+    "appearance": "Aparência e Tema",
+    "themeMode": "Modo do Tema",
+    "themeSystem": "Sistema",
+    "themeDark": "Escuro",
+    "themeLight": "Claro",
+    "glow": "Efeitos de brilho de fundo",
+    "searchHeader": "Pesquisa e Sugestões",
+    "searchEngine": "Mecanismo de Pesquisa",
+    "suggestions": "Mostrar sugestões de pesquisa",
+    "clockHeader": "Relógio e Widgets",
+    "clock24h": "Relógio de 24 horas",
+    "clockSeconds": "Mostrar segundos",
+    "greeting": "Mostrar saudação",
+    "dateHeader": "Mostrar data no cabeçalho"
+  },
+  "footer": {
+    "focusSearch": "Focar na pesquisa",
+    "launchShortcut": "Abrir atalho"
+  },
+  "header": {
+    "themeToggle": "Alternar Tema",
+    "themeToggleAria": "Alternar Tema Claro/Escuro",
+    "settings": "Configurações",
+    "settingsAria": "Abrir Configurações"
+  }
+}

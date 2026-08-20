@@ -1,0 +1,67 @@
+{
+  "general": {
+    "pageTitle": "Nouvel onglet",
+    "today": "Aujourd'hui"
+  },
+  "greetings": {
+    "morning": "Bonjour",
+    "afternoon": "Bon après-midi",
+    "evening": "Bonsoir",
+    "night": "Bonne nuit",
+    "welcome": "Bienvenue"
+  },
+  "search": {
+    "placeholder": "Rechercher sur {engine}",
+    "clear": "Effacer la recherche",
+    "submit": "Rechercher"
+  },
+  "bookmarks": {
+    "quickAccess": "Accès Rapide",
+    "addShortcut": "Ajouter un raccourci",
+    "editShortcut": "Modifier le raccourci",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "title": "Titre",
+    "titlePlaceholder": "ex. Wikipedia",
+    "url": "URL",
+    "urlPlaceholder": "https://wikipedia.org",
+    "iconUrl": "URL de l'icône (facultatif)",
+    "iconUrlPlaceholder": "Laisser vide pour le favicon auto",
+    "cancel": "Annuler",
+    "save": "Enregistrer le raccourci",
+    "saveChanges": "Enregistrer les modifications",
+    "shortcut": "Raccourci",
+    "optionsAria": "Options pour {title}"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "close": "Fermer",
+    "general": "Général et Langue",
+    "language": "Langue",
+    "languageAuto": "Auto ({lang})",
+    "appearance": "Apparence et Thème",
+    "themeMode": "Mode du thème",
+    "themeSystem": "Système",
+    "themeDark": "Sombre",
+    "themeLight": "Clair",
+    "glow": "Effets de lueur d'arrière-plan",
+    "searchHeader": "Recherche et Suggestions",
+    "searchEngine": "Moteur de recherche",
+    "suggestions": "Afficher les suggestions de recherche",
+    "clockHeader": "Horloge et Widgets",
+    "clock24h": "Horloge 24 heures",
+    "clockSeconds": "Afficher les secondes",
+    "greeting": "Afficher le message de salutation",
+    "dateHeader": "Afficher la date dans l'en-tête"
+  },
+  "footer": {
+    "focusSearch": "Focus sur la recherche",
+    "launchShortcut": "Ouvrir le raccourci"
+  },
+  "header": {
+    "themeToggle": "Changer de thème",
+    "themeToggleAria": "Basculer entre thème clair et sombre",
+    "settings": "Paramètres",
+    "settingsAria": "Ouvrir les paramètres"
+  }
+}

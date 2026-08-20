@@ -1,0 +1,67 @@
+{
+  "general": {
+    "pageTitle": "New Tab",
+    "today": "Today"
+  },
+  "greetings": {
+    "morning": "Good morning",
+    "afternoon": "Good afternoon",
+    "evening": "Good evening",
+    "night": "Good night",
+    "welcome": "Welcome"
+  },
+  "search": {
+    "placeholder": "Search on {engine}",
+    "clear": "Clear Search",
+    "submit": "Search"
+  },
+  "bookmarks": {
+    "quickAccess": "Quick Access",
+    "addShortcut": "Add Shortcut",
+    "editShortcut": "Edit Shortcut",
+    "edit": "Edit",
+    "delete": "Delete",
+    "title": "Title",
+    "titlePlaceholder": "e.g. Wikipedia",
+    "url": "URL",
+    "urlPlaceholder": "https://wikipedia.org",
+    "iconUrl": "Icon URL (optional)",
+    "iconUrlPlaceholder": "Leave empty for auto-favicon",
+    "cancel": "Cancel",
+    "save": "Save Shortcut",
+    "saveChanges": "Save Changes",
+    "shortcut": "Shortcut",
+    "optionsAria": "Options for {title}"
+  },
+  "settings": {
+    "title": "Settings",
+    "close": "Close",
+    "general": "General & Language",
+    "language": "Language",
+    "languageAuto": "Auto ({lang})",
+    "appearance": "Appearance & Theme",
+    "themeMode": "Theme Mode",
+    "themeSystem": "System",
+    "themeDark": "Dark",
+    "themeLight": "Light",
+    "glow": "Background Glow Effects",
+    "searchHeader": "Search & Suggestions",
+    "searchEngine": "Search Engine",
+    "suggestions": "Show Search Suggestions",
+    "clockHeader": "Clock & Widgets",
+    "clock24h": "24-Hour Clock",
+    "clockSeconds": "Show Seconds",
+    "greeting": "Show Greeting",
+    "dateHeader": "Show Date Header"
+  },
+  "footer": {
+    "focusSearch": "Focus search",
+    "launchShortcut": "Launch shortcut"
+  },
+  "header": {
+    "themeToggle": "Toggle Theme",
+    "themeToggleAria": "Toggle Light/Dark Theme",
+    "settings": "Settings",
+    "settingsAria": "Open Settings"
+  }
+}

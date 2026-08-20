@@ -1,0 +1,67 @@
+{
+  "general": {
+    "pageTitle": "新しいタブ",
+    "today": "今日"
+  },
+  "greetings": {
+    "morning": "おはようございます",
+    "afternoon": "こんにちは",
+    "evening": "こんばんは",
+    "night": "おやすみなさい",
+    "welcome": "ようこそ"
+  },
+  "search": {
+    "placeholder": "{engine} で検索",
+    "clear": "検索をクリア",
+    "submit": "検索"
+  },
+  "bookmarks": {
+    "quickAccess": "クイックアクセス",
+    "addShortcut": "ショートカットを追加",
+    "editShortcut": "ショートカットを編集",
+    "edit": "編集",
+    "delete": "削除",
+    "title": "タイトル",
+    "titlePlaceholder": "例: Wikipedia",
+    "url": "URL",
+    "urlPlaceholder": "https://wikipedia.org",
+    "iconUrl": "アイコンURL (任意)",
+    "iconUrlPlaceholder": "空欄でファビコンを自動取得",
+    "cancel": "キャンセル",
+    "save": "ショートカットを保存",
+    "saveChanges": "変更を保存",
+    "shortcut": "ショートカット",
+    "optionsAria": "{title} のオプション"
+  },
+  "settings": {
+    "title": "設定",
+    "close": "閉じる",
+    "general": "全般と言語",
+    "language": "言語",
+    "languageAuto": "自動（{lang}）",
+    "appearance": "外観とテーマ",
+    "themeMode": "テーマモード",
+    "themeSystem": "システム",
+    "themeDark": "ダーク",
+    "themeLight": "ライト",
+    "glow": "背景グロー効果",
+    "searchHeader": "検索とサジェスト",
+    "searchEngine": "検索エンジン",
+    "suggestions": "検索候補を表示",
+    "clockHeader": "時計とウィジェット",
+    "clock24h": "24時間表示",
+    "clockSeconds": "秒を表示",
+    "greeting": "挨拶を表示",
+    "dateHeader": "日付ヘッダーを表示"
+  },
+  "footer": {
+    "focusSearch": "検索にフォーカス",
+    "launchShortcut": "ショートカットを開く"
+  },
+  "header": {
+    "themeToggle": "テーマを切り替え",
+    "themeToggleAria": "ライト/ダークテーマを切り替え",
+    "settings": "設定",
+    "settingsAria": "設定を開く"
+  }
+}

@@ -1,0 +1,31 @@
+/* Time & Greeting Section */
+.time-section {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.digital-clock {
+  font-size: 4.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  line-height: 1.1;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.greeting-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.greeting-text {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
