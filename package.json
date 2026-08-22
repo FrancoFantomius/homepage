@@ -18,5 +18,8 @@
   "license": "MIT",
   "allowScripts": {
     "esbuild@0.28.2": true
+  },
+  "dependencies": {
+    "@francofantomius/material-components": "^1.0.2"
   }
 }

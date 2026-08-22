@@ -15,123 +15,85 @@ const settingsModal = document.getElementById('settings-modal');
 const closeSettingsModalBtn = document.getElementById('close-settings-modal');
 const themeSelector = document.getElementById('theme-selector');
 
-const settingsEngineDropdown = document.getElementById('settings-engine-dropdown');
 const settingsEngineTrigger = document.getElementById('settings-engine-trigger');
-const settingsEngineIcon = document.getElementById('settings-engine-icon');
-const settingsEngineName = document.getElementById('settings-engine-name');
-const settingsEngineMenu = document.getElementById('settings-engine-menu');
+const engineDialog = document.getElementById('engine-dialog');
+const engineRadioGroup = document.getElementById('engine-radio-group');
+const cancelEngineBtn = document.getElementById('cancel-engine-btn');
+const confirmEngineBtn = document.getElementById('confirm-engine-btn');
 
-const settingsLangDropdown = document.getElementById('settings-lang-dropdown');
 const settingsLangTrigger = document.getElementById('settings-lang-trigger');
-const settingsLangName = document.getElementById('settings-lang-name');
-const settingsLangMenu = document.getElementById('settings-lang-menu');
+const languageDialog = document.getElementById('language-dialog');
+const languageRadioGroup = document.getElementById('language-radio-group');
+const cancelLanguageBtn = document.getElementById('cancel-language-btn');
+const confirmLanguageBtn = document.getElementById('confirm-language-btn');
 
-const toggleGlow = document.getElementById('toggle-glow');
 const toggle24h = document.getElementById('toggle-24h');
 const toggleSeconds = document.getElementById('toggle-seconds');
 const toggleGreeting = document.getElementById('toggle-greeting');
 const toggleDate = document.getElementById('toggle-date');
 
-const bgEffects = document.querySelector('.bg-effects');
 const currentDateEl = document.getElementById('current-date');
 const greetingText = document.getElementById('greeting-text');
 
-export function closeSettingsEngineDropdown() {
-  if (settingsEngineDropdown) {
-    settingsEngineDropdown.classList.remove('open');
-    if (settingsEngineTrigger) {
-      settingsEngineTrigger.setAttribute('aria-expanded', 'false');
-    }
-    if (settingsEngineMenu) {
-      settingsEngineMenu.setAttribute('aria-hidden', 'true');
-    }
-  }
-}
-
-export function closeSettingsLangDropdown() {
-  if (settingsLangDropdown) {
-    settingsLangDropdown.classList.remove('open');
-    if (settingsLangTrigger) {
-      settingsLangTrigger.setAttribute('aria-expanded', 'false');
-    }
-    if (settingsLangMenu) {
-      settingsLangMenu.setAttribute('aria-hidden', 'true');
-    }
-  }
-}
-
-export function populateSettingsEngineDropdown() {
-  if (!settingsEngineMenu) return;
-  settingsEngineMenu.innerHTML = '';
+export function populateEngineRadioGroup() {
+  if (!engineRadioGroup) return;
+  engineRadioGroup.innerHTML = '';
 
   const activeEngine = getCurrentSearchEngine();
 
   SEARCH_ENGINES.forEach(engine => {
-    const isSelected = engine.id === activeEngine.id;
-    const item = document.createElement('button');
-    item.type = 'button';
-    item.className = `custom-dropdown-item ${isSelected ? 'active' : ''}`;
-    item.setAttribute('data-engine-id', engine.id);
-    item.setAttribute('role', 'option');
-    item.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+    const radio = document.createElement('md-radio');
+    radio.value = engine.id;
+    radio.name = 'engine-selector';
+    if (engine.id === activeEngine.id) {
+      radio.checked = true;
+    }
 
-    item.innerHTML = `
-      <img src="${getEngineFavicon(engine)}" class="custom-dropdown-item-icon" width="16" height="16" alt="${engine.name}" loading="lazy">
-      <span class="custom-dropdown-item-name">${engine.name}</span>
-      <svg class="custom-dropdown-item-check" viewBox="0 -960 960 960" width="16" height="16" fill="currentColor">
-        <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
-      </svg>
-    `;
+    const icon = document.createElement('img');
+    icon.src = getEngineFavicon(engine);
+    icon.className = 'engine-dialog-radio-icon';
+    icon.width = 18;
+    icon.height = 18;
+    icon.alt = engine.name;
+    icon.loading = 'lazy';
 
-    item.addEventListener('click', (e) => {
-      e.stopPropagation();
-      state.config.searchEngine = engine.id;
-      saveConfig();
-      applyConfig();
-      syncSettingsUI();
-      closeSettingsEngineDropdown();
-    });
+    const label = document.createElement('span');
+    label.className = 'engine-dialog-radio-name';
+    label.textContent = engine.name;
 
-    settingsEngineMenu.appendChild(item);
+    radio.appendChild(icon);
+    radio.appendChild(label);
+    engineRadioGroup.appendChild(radio);
   });
+
+  engineRadioGroup.value = activeEngine.id;
 }
 
-export function populateSettingsLangDropdown() {
-  if (!settingsLangMenu) return;
-  settingsLangMenu.innerHTML = '';
+export function openEngineDialog() {
+  if (!engineDialog) return;
+  populateEngineRadioGroup();
+  const activeEngine = getCurrentSearchEngine();
+  if (engineRadioGroup) {
+    engineRadioGroup.value = activeEngine.id;
+    engineRadioGroup.querySelectorAll('md-radio').forEach(r => {
+      r.checked = (r.value === activeEngine.id);
+    });
+  }
+  if (typeof engineDialog.show === 'function') {
+    engineDialog.show();
+  } else {
+    engineDialog.open = true;
+  }
+}
 
-  const currentLangSetting = state.config.language || 'auto';
+export function populateLanguageRadioGroup() {
+  if (!languageRadioGroup) return;
+  languageRadioGroup.innerHTML = '';
 
-  // 1. "Auto (Language)" option
-  const autoOption = document.createElement('button');
-  const isAutoSelected = currentLangSetting === 'auto';
-  autoOption.type = 'button';
-  autoOption.className = `custom-dropdown-item ${isAutoSelected ? 'active' : ''}`;
-  autoOption.setAttribute('data-lang-code', 'auto');
-  autoOption.setAttribute('role', 'option');
-  autoOption.setAttribute('aria-selected', isAutoSelected ? 'true' : 'false');
+  const currentSetting = state.config.language || 'auto';
+  const effectiveLang = currentSetting === 'auto' ? detectBrowserLanguage() : currentSetting;
 
-  const detectedCode = detectBrowserLanguage();
-  const detectedLangObj = SUPPORTED_LANGUAGES.find(l => l.code === detectedCode) || SUPPORTED_LANGUAGES[0];
-  const autoLabel = t('settings.languageAuto', { lang: detectedLangObj.nativeName });
-
-  autoOption.innerHTML = `
-    <span class="custom-dropdown-item-name">${autoLabel}</span>
-    <svg class="custom-dropdown-item-check" viewBox="0 -960 960 960" width="16" height="16" fill="currentColor">
-      <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
-    </svg>
-  `;
-
-  autoOption.addEventListener('click', async (e) => {
-    e.stopPropagation();
-    await setLanguage('auto');
-    syncSettingsUI();
-    closeSettingsLangDropdown();
-  });
-
-  settingsLangMenu.appendChild(autoOption);
-
-  // 2. Individual language options sorted alphabetically
+  // Individual language options sorted alphabetically
   const sortedLanguages = [...SUPPORTED_LANGUAGES].sort((a, b) => {
     const labelA = a.nativeName === a.name ? a.name : `${a.nativeName} (${a.name})`;
     const labelB = b.nativeName === b.name ? b.name : `${b.nativeName} (${b.name})`;
@@ -139,32 +101,36 @@ export function populateSettingsLangDropdown() {
   });
 
   sortedLanguages.forEach(lang => {
-    const isSelected = currentLangSetting === lang.code;
-    const item = document.createElement('button');
-    item.type = 'button';
-    item.className = `custom-dropdown-item ${isSelected ? 'active' : ''}`;
-    item.setAttribute('data-lang-code', lang.code);
-    item.setAttribute('role', 'option');
-    item.setAttribute('aria-selected', isSelected ? 'true' : 'false');
-
+    const radio = document.createElement('md-radio');
+    radio.value = lang.code;
+    radio.name = 'language-selector';
+    if (lang.code === effectiveLang) {
+      radio.checked = true;
+    }
     const label = lang.nativeName === lang.name ? lang.name : `${lang.nativeName} (${lang.name})`;
-
-    item.innerHTML = `
-      <span class="custom-dropdown-item-name">${label}</span>
-      <svg class="custom-dropdown-item-check" viewBox="0 -960 960 960" width="16" height="16" fill="currentColor">
-        <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
-      </svg>
-    `;
-
-    item.addEventListener('click', async (e) => {
-      e.stopPropagation();
-      await setLanguage(lang.code);
-      syncSettingsUI();
-      closeSettingsLangDropdown();
-    });
-
-    settingsLangMenu.appendChild(item);
+    radio.textContent = label;
+    languageRadioGroup.appendChild(radio);
   });
+
+  languageRadioGroup.value = effectiveLang;
+}
+
+export function openLanguageDialog() {
+  if (!languageDialog) return;
+  populateLanguageRadioGroup();
+  const currentSetting = state.config.language || 'auto';
+  const effectiveLang = currentSetting === 'auto' ? detectBrowserLanguage() : currentSetting;
+  if (languageRadioGroup) {
+    languageRadioGroup.value = effectiveLang;
+    languageRadioGroup.querySelectorAll('md-radio').forEach(r => {
+      r.checked = (r.value === effectiveLang);
+    });
+  }
+  if (typeof languageDialog.show === 'function') {
+    languageDialog.show();
+  } else {
+    languageDialog.open = true;
+  }
 }
 
 export function syncSettingsUI() {
@@ -175,61 +141,16 @@ export function syncSettingsUI() {
     });
   }
 
-  // Engine dropdown trigger & active state
-  const currentEngine = getCurrentSearchEngine();
-  if (settingsEngineIcon) {
-    settingsEngineIcon.src = getEngineFavicon(currentEngine);
-    settingsEngineIcon.alt = currentEngine.name;
-  }
-  if (settingsEngineName) {
-    settingsEngineName.textContent = currentEngine.name;
-  }
-
-  if (settingsEngineMenu) {
-    const items = settingsEngineMenu.querySelectorAll('.custom-dropdown-item');
-    items.forEach(item => {
-      const isSelected = item.getAttribute('data-engine-id') === currentEngine.id;
-      item.classList.toggle('active', isSelected);
-      item.setAttribute('aria-selected', isSelected ? 'true' : 'false');
-    });
-  }
-
-  // Language dropdown trigger & active state
-  const langConfig = state.config.language || 'auto';
-  if (settingsLangName) {
-    if (langConfig === 'auto') {
-      const detectedCode = detectBrowserLanguage();
-      const detectedLangObj = SUPPORTED_LANGUAGES.find(l => l.code === detectedCode) || SUPPORTED_LANGUAGES[0];
-      settingsLangName.textContent = t('settings.languageAuto', { lang: detectedLangObj.nativeName });
-    } else {
-      const activeLang = SUPPORTED_LANGUAGES.find(l => l.code === langConfig);
-      settingsLangName.textContent = activeLang ? activeLang.nativeName : langConfig;
-    }
-  }
-
-  if (settingsLangMenu) {
-    const items = settingsLangMenu.querySelectorAll('.custom-dropdown-item');
-    items.forEach(item => {
-      const isSelected = item.getAttribute('data-lang-code') === langConfig;
-      item.classList.toggle('active', isSelected);
-      item.setAttribute('aria-selected', isSelected ? 'true' : 'false');
-    });
-  }
-
-  if (toggleGlow) toggleGlow.checked = state.config.showGlow;
-  if (toggle24h) toggle24h.checked = state.config.is24Hour;
-  if (toggleSeconds) toggleSeconds.checked = state.config.showSeconds;
-  if (toggleGreeting) toggleGreeting.checked = state.config.showGreeting;
-  if (toggleDate) toggleDate.checked = state.config.showDate;
+  if (toggle24h) toggle24h.selected = !!state.config.is24Hour;
+  if (toggleSeconds) toggleSeconds.selected = !!state.config.showSeconds;
+  if (toggleGreeting) toggleGreeting.selected = !!state.config.showGreeting;
+  if (toggleDate) toggleDate.selected = !!state.config.showDate;
 }
 
 export function applyConfig() {
   applyTheme(state.config.theme);
 
   // Toggle widgets visibility
-  if (bgEffects) {
-    bgEffects.classList.toggle('hidden', !state.config.showGlow);
-  }
   if (currentDateEl) {
     currentDateEl.style.display = state.config.showDate ? 'inline-block' : 'none';
   }
@@ -243,21 +164,16 @@ export function applyConfig() {
 }
 
 export function initSettings() {
-  populateSettingsEngineDropdown();
-  populateSettingsLangDropdown();
-
   // Re-populate and sync when language changes
   onLanguageChange(() => {
-    populateSettingsEngineDropdown();
-    populateSettingsLangDropdown();
     syncSettingsUI();
     applyConfig();
   });
 
   if (settingsBtn) {
     settingsBtn.addEventListener('click', () => {
-      const appsPopover = document.getElementById('apps-popover');
-      if (appsPopover) appsPopover.classList.remove('open');
+      const appDrawer = document.querySelector('md-app-drawer');
+      if (appDrawer) appDrawer.open = false;
       syncSettingsUI();
       openModal(settingsModal);
     });
@@ -265,47 +181,79 @@ export function initSettings() {
 
   if (closeSettingsModalBtn) {
     closeSettingsModalBtn.addEventListener('click', () => {
-      closeSettingsEngineDropdown();
-      closeSettingsLangDropdown();
       closeModal(settingsModal);
     });
   }
 
-  // Search Engine custom dropdown trigger
-  if (settingsEngineTrigger && settingsEngineDropdown) {
+  // Search Engine trigger - opens dialog
+  if (settingsEngineTrigger) {
     settingsEngineTrigger.addEventListener('click', (e) => {
       e.stopPropagation();
-      closeSettingsLangDropdown();
-      const isOpen = settingsEngineDropdown.classList.toggle('open');
-      settingsEngineTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      if (settingsEngineMenu) {
-        settingsEngineMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+      openEngineDialog();
+    });
+  }
+
+  // Search Engine Dialog buttons
+  if (confirmEngineBtn) {
+    confirmEngineBtn.addEventListener('click', () => {
+      let selected = engineRadioGroup?.value;
+      if (!selected) {
+        const checkedRadio = engineRadioGroup?.querySelector('md-radio[checked]');
+        if (checkedRadio) selected = checkedRadio.value;
+      }
+      if (selected) {
+        state.config.searchEngine = selected;
+        saveConfig();
+        applyConfig();
+        syncSettingsUI();
+      }
+      if (engineDialog) {
+        engineDialog.close();
       }
     });
   }
 
-  // Language custom dropdown trigger
-  if (settingsLangTrigger && settingsLangDropdown) {
+  if (cancelEngineBtn) {
+    cancelEngineBtn.addEventListener('click', () => {
+      if (engineDialog) {
+        engineDialog.close();
+      }
+    });
+  }
+
+  // Language trigger - opens dialog
+  if (settingsLangTrigger) {
     settingsLangTrigger.addEventListener('click', (e) => {
       e.stopPropagation();
-      closeSettingsEngineDropdown();
-      const isOpen = settingsLangDropdown.classList.toggle('open');
-      settingsLangTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      if (settingsLangMenu) {
-        settingsLangMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+      openLanguageDialog();
+    });
+  }
+
+  // Language Dialog buttons
+  if (confirmLanguageBtn) {
+    confirmLanguageBtn.addEventListener('click', async () => {
+      let selected = languageRadioGroup?.value;
+      if (!selected) {
+        const checkedRadio = languageRadioGroup?.querySelector('md-radio[checked]');
+        if (checkedRadio) selected = checkedRadio.value;
+      }
+      if (selected) {
+        await setLanguage(selected);
+        syncSettingsUI();
+      }
+      if (languageDialog) {
+        languageDialog.close();
       }
     });
   }
 
-  // Close dropdowns on outside click
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('#settings-engine-dropdown')) {
-      closeSettingsEngineDropdown();
-    }
-    if (!e.target.closest('#settings-lang-dropdown')) {
-      closeSettingsLangDropdown();
-    }
-  });
+  if (cancelLanguageBtn) {
+    cancelLanguageBtn.addEventListener('click', () => {
+      if (languageDialog) {
+        languageDialog.close();
+      }
+    });
+  }
 
   // Theme selector segmented control
   if (themeSelector) {
@@ -320,17 +268,9 @@ export function initSettings() {
   }
 
   // Toggle switch listeners
-  if (toggleGlow) {
-    toggleGlow.addEventListener('change', () => {
-      state.config.showGlow = toggleGlow.checked;
-      saveConfig();
-      applyConfig();
-    });
-  }
-
   if (toggle24h) {
     toggle24h.addEventListener('change', () => {
-      state.config.is24Hour = toggle24h.checked;
+      state.config.is24Hour = toggle24h.selected ?? toggle24h.checked;
       saveConfig();
       applyConfig();
     });
@@ -338,7 +278,7 @@ export function initSettings() {
 
   if (toggleSeconds) {
     toggleSeconds.addEventListener('change', () => {
-      state.config.showSeconds = toggleSeconds.checked;
+      state.config.showSeconds = toggleSeconds.selected ?? toggleSeconds.checked;
       saveConfig();
       applyConfig();
     });
@@ -346,7 +286,7 @@ export function initSettings() {
 
   if (toggleGreeting) {
     toggleGreeting.addEventListener('change', () => {
-      state.config.showGreeting = toggleGreeting.checked;
+      state.config.showGreeting = toggleGreeting.selected ?? toggleGreeting.checked;
       saveConfig();
       applyConfig();
     });
@@ -354,7 +294,7 @@ export function initSettings() {
 
   if (toggleDate) {
     toggleDate.addEventListener('change', () => {
-      state.config.showDate = toggleDate.checked;
+      state.config.showDate = toggleDate.selected ?? toggleDate.checked;
       saveConfig();
       applyConfig();
     });

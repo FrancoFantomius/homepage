@@ -37,165 +37,7 @@
   gap: 1rem;
 }
 
-/* Custom Dropdowns (Search Engine & Language) in Settings */
-.custom-engine-dropdown,
-.custom-dropdown {
-  position: relative;
-  min-width: 170px;
-}
 
-.custom-engine-trigger,
-.custom-dropdown-trigger {
-  width: 100%;
-  background: var(--input-bg);
-  border: 1px solid var(--input-border);
-  border-radius: var(--radius-sm);
-  padding: 0.45rem 0.75rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  cursor: pointer;
-  color: var(--text-primary);
-  font-size: 0.875rem;
-  font-family: inherit;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-}
-
-.custom-engine-trigger:hover,
-.custom-dropdown-trigger:hover {
-  background: var(--bg-surface-hover);
-  border-color: var(--card-border-hover);
-}
-
-.custom-engine-dropdown.open .custom-engine-trigger,
-.custom-dropdown.open .custom-dropdown-trigger {
-  border-color: var(--accent-color);
-  box-shadow: 0 0 0 2px var(--accent-glow);
-}
-
-.custom-engine-icon,
-.custom-dropdown-icon {
-  width: 18px;
-  height: 18px;
-  border-radius: 3px;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
-.custom-engine-name,
-.custom-dropdown-name {
-  flex: 1;
-  text-align: left;
-  font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.custom-dropdown-arrow {
-  color: var(--text-muted);
-  transition: transform 0.2s ease;
-  flex-shrink: 0;
-}
-
-.custom-engine-dropdown.open .custom-dropdown-arrow,
-.custom-dropdown.open .custom-dropdown-arrow {
-  transform: rotate(180deg);
-}
-
-.custom-engine-menu,
-.custom-dropdown-menu {
-  position: absolute;
-  top: calc(100% + 6px);
-  right: 0;
-  left: 0;
-  background: var(--modal-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-  padding: 0.35rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  z-index: 100;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-6px) scale(0.97);
-  transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s ease;
-  max-height: 220px;
-  overflow-y: auto;
-}
-
-.custom-engine-dropdown.open .custom-engine-menu,
-.custom-dropdown.open .custom-dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0) scale(1);
-}
-
-.custom-engine-item,
-.custom-dropdown-item {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.45rem 0.65rem;
-  border: none;
-  background: transparent;
-  color: var(--text-primary);
-  font-size: 0.85rem;
-  font-family: inherit;
-  font-weight: 500;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  width: 100%;
-  text-align: left;
-  transition: background 0.15s ease, color 0.15s ease;
-}
-
-.custom-engine-item:hover,
-.custom-dropdown-item:hover {
-  background: var(--bg-surface-hover);
-}
-
-.custom-engine-item.active,
-.custom-dropdown-item.active {
-  background: var(--accent-glow);
-  color: var(--accent-color);
-  font-weight: 600;
-}
-
-.custom-engine-item-icon,
-.custom-dropdown-item-icon {
-  width: 16px;
-  height: 16px;
-  border-radius: 3px;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
-.custom-engine-item-name,
-.custom-dropdown-item-name {
-  flex: 1;
-}
-
-.custom-engine-item-check,
-.custom-dropdown-item-check {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-  color: var(--accent-color);
-  opacity: 0;
-  transform: scale(0.6);
-  transition: opacity 0.2s ease, transform 0.2s var(--transition-bounce);
-}
-
-.custom-engine-item.active .custom-engine-item-check,
-.custom-dropdown-item.active .custom-dropdown-item-check {
-  opacity: 1;
-  transform: scale(1);
-}
 
 /* Segmented Control */
 .segmented-control {
@@ -224,51 +66,87 @@
   color: #ffffff;
 }
 
-/* Toggle Switch */
-.toggle-switch {
-  position: relative;
-  display: inline-block;
-  width: 44px;
-  height: 24px;
+/* Material Switch */
+md-switch {
+  --md-sys-color-primary: var(--accent-color);
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-surface-container-highest: var(--input-bg);
+  --md-sys-color-outline: var(--text-secondary);
+  --md-sys-color-on-surface: var(--text-primary);
+  flex-shrink: 0;
 }
 
-.toggle-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+/* Language & Search Engine Selection Dialog & Radio Group */
+md-dialog::part(dialog)::backdrop,
+dialog::backdrop {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background-color: var(--modal-overlay);
 }
 
-.slider {
-  position: absolute;
+#language-dialog,
+#engine-dialog {
+  --md-sys-color-surface-container-high: var(--modal-bg);
+  --md-sys-color-on-surface: var(--text-primary);
+  --md-sys-color-on-surface-variant: var(--text-secondary);
+  --md-sys-color-primary: var(--accent-color);
+  --md-sys-color-on-primary: #ffffff;
+}
+
+.language-dialog-content,
+.engine-dialog-content {
+  width: 440px;
+  max-width: 100%;
+  min-width: min(380px, 80vw);
+  max-height: 340px;
+  overflow-y: auto;
+  padding: 4px 6px 4px 2px;
+  margin: 4px 0 8px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--card-border) transparent;
+  box-sizing: border-box;
+}
+
+#language-radio-group,
+#engine-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#language-radio-group md-radio,
+#engine-radio-group md-radio {
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  transition: background-color 0.15s ease;
+  font-size: 0.95rem;
+  color: var(--text-primary);
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--input-bg);
-  border: 1px solid var(--input-border);
-  transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  border-radius: 34px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 16px;
-  width: 16px;
-  left: 3px;
-  bottom: 3px;
-  background-color: var(--text-secondary);
-  transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  border-radius: 50%;
+#language-radio-group md-radio:hover,
+#engine-radio-group md-radio:hover {
+  background-color: var(--bg-surface-hover);
 }
 
-input:checked+.slider {
-  background-color: var(--accent-color);
-  border-color: var(--accent-color);
+.engine-dialog-radio-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  object-fit: contain;
+  margin-right: 8px;
+  vertical-align: middle;
+  pointer-events: none;
 }
 
-input:checked+.slider:before {
-  transform: translateX(20px);
-  background-color: #ffffff;
+.engine-dialog-radio-name {
+  vertical-align: middle;
+  pointer-events: none;
+}
+
+#settings-lang-trigger,
+#settings-engine-trigger {
+  margin-left: auto;
 }

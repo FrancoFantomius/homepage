@@ -37,6 +37,7 @@ const CORE_ASSETS = [
   './img/icon.svg',
   './img/add.svg',
   './img/apps.svg',
+  './img/arrow_back.svg',
   './img/arrow_forward.svg',
   './img/bookmark.svg',
   './img/check.svg',

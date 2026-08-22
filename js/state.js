@@ -84,7 +84,6 @@ export const DEFAULT_CONFIG = {
   showSeconds: false,
   showGreeting: true,
   showDate: true,
-  showGlow: true,
   disablePwaOnLocalhost: true
 };
 

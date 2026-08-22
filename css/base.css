@@ -45,46 +45,6 @@ body {
   scrollbar-color: var(--card-border) transparent;
 }
 
-/* Background Ambient Glow */
-.bg-effects {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-  opacity: 1;
-  transition: opacity var(--transition-speed) ease;
-}
-
-.bg-effects.hidden {
-  opacity: 0;
-}
-
-.glow-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(90px);
-  will-change: transform;
-}
-
-.glow-orb-1 {
-  top: 10%;
-  left: 20%;
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, var(--glow-1) 0%, transparent 70%);
-}
-
-.glow-orb-2 {
-  bottom: 15%;
-  right: 18%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, var(--glow-2) 0%, transparent 70%);
-}
 
 /* App Container */
 .app-container {

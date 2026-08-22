@@ -12,7 +12,7 @@ Homepage provides a clean, responsive new tab experience designed for speed and 
 - Multiple search engines: Easily switch between privacy-focused and mainstream search engines (Startpage, DuckDuckGo, Brave Search, Google, Bing, Ecosia, Qwant).
 - Customizable shortcuts: Add, edit, remove, and reorder quick-access bookmarks with automatic favicon fetching or custom icons.
 - Digital clock and greeting: Time display supporting 12-hour and 24-hour formats, optional seconds, dynamic time-based greetings, and date badges.
-- Themes and visual effects: Dark mode, Light mode, and System Auto detection, along with toggleable background glow effects.
+- Themes and appearance: Dark mode, Light mode, and System Auto detection.
 - Multilingual support: Fully localized across 9 languages (English, German, Spanish, French, Italian, Japanese, Portuguese, Russian, Chinese) with automatic browser locale detection.
 - PWA and offline ready: Service worker caching and web app manifest for standalone desktop/mobile installation and offline support.
 - Keyboard navigation: Full keyboard control for searching and shortcut launching.
