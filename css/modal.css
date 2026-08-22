@@ -1,4 +1,4 @@
-/* Modal Dialogs & Common Forms */
+/* Modal Dialogs & Common Forms - Material Design 3 */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -12,7 +12,7 @@
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s ease, visibility 0.2s ease;
+  transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
 }
 
 .modal-overlay.open {
@@ -20,16 +20,18 @@
   visibility: visible;
 }
 
+/* M3 Dialog Surface (28px corner radius, Level 3 elevation) */
 .modal-card {
   background: var(--modal-bg);
   border: 1px solid var(--card-border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--md-sys-shape-corner-extra-large);
   width: 90%;
   max-width: 440px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  padding: 1.5rem 1.6rem;
-  transform: translateY(10px) scale(0.98);
-  transition: transform 0.25s var(--transition-bounce);
+  box-shadow: var(--md-sys-elevation-level3);
+  padding: 1.5rem 1.75rem;
+  transform: translateY(12px) scale(0.96);
+  transition: transform var(--transition-speed) var(--transition-bounce),
+              opacity var(--transition-speed) ease;
   max-height: 88vh;
   overflow-y: auto;
   scrollbar-gutter: stable;
@@ -46,23 +48,29 @@
   margin-bottom: 1.25rem;
 }
 
+/* M3 Headline Small */
 .modal-header h3 {
-  font-size: 1.15rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--text-primary);
 }
 
+/* M3 Standard Close Icon Button */
 .close-modal-btn {
   background: transparent;
   border: none;
   color: var(--text-muted);
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-full);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--md-sys-shape-corner-full);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background-color var(--transition-speed) ease,
+              color var(--transition-speed) ease,
+              transform var(--transition-speed) var(--transition-bounce);
 }
 
 .close-modal-btn:hover {
@@ -70,30 +78,43 @@
   color: var(--text-primary);
 }
 
-/* Forms */
-.form-group {
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
+.close-modal-btn:active {
+  transform: scale(0.92);
 }
 
+/* Forms */
+.form-group {
+  margin-bottom: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* M3 Label Medium */
 .form-group label {
-  font-size: 0.825rem;
+  font-size: 0.8rem;
   font-weight: 500;
+  letter-spacing: 0.1px;
   color: var(--text-secondary);
 }
 
+/* M3 Outlined Text Input */
 .form-group input {
   background: var(--input-bg);
   border: 1px solid var(--input-border);
-  border-radius: var(--radius-sm);
-  padding: 0.65rem 0.85rem;
+  border-radius: var(--md-sys-shape-corner-small);
+  padding: 0.75rem 1rem;
   font-size: 0.95rem;
   color: var(--text-primary);
   outline: none;
   font-family: inherit;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease,
+              background-color var(--transition-speed) ease;
+}
+
+.form-group input:hover {
+  border-color: var(--text-muted);
 }
 
 .form-group input:focus {
@@ -101,39 +122,61 @@
   box-shadow: 0 0 0 2px var(--accent-glow);
 }
 
-/* Modal Action Buttons */
+/* Modal Action Buttons (M3 Buttons: 40px height, full pill) */
 .modal-actions {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   gap: 0.75rem;
-  margin-top: 1.5rem;
+  margin-top: 1.75rem;
 }
 
+/* M3 Filled Button */
 .btn-primary {
   background: var(--accent-color);
   color: #ffffff;
   border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.9rem;
+  height: 40px;
+  padding: 0 1.5rem;
+  border-radius: var(--md-sys-shape-corner-full);
+  font-size: 0.875rem;
   font-weight: 500;
+  letter-spacing: 0.1px;
   cursor: pointer;
-  transition: all var(--transition-speed) ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease,
+              transform var(--transition-speed) var(--transition-bounce);
 }
 
 .btn-primary:hover {
   background: var(--accent-hover);
+  box-shadow: var(--md-sys-elevation-level1);
 }
 
+.btn-primary:active {
+  transform: scale(0.96);
+}
+
+/* M3 Text / Tonal Button */
 .btn-cancel {
   background: transparent;
   color: var(--text-secondary);
-  border: 1px solid var(--card-border);
-  padding: 0.6rem 1.2rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.9rem;
+  border: none;
+  height: 40px;
+  padding: 0 1.2rem;
+  border-radius: var(--md-sys-shape-corner-full);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.1px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-speed) ease,
+              color var(--transition-speed) ease;
 }
 
 .btn-cancel:hover {
@@ -141,19 +184,28 @@
   color: var(--text-primary);
 }
 
+.btn-cancel:active {
+  transform: scale(0.96);
+}
+
+/* M3 Danger Tonal Button */
 .btn-danger {
-  background: rgba(239, 68, 68, 0.15);
-  color: #ef4444;
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--md-sys-color-error, #ef4444) 15%, transparent);
+  color: var(--md-sys-color-error, #ef4444);
+  border: 1px solid color-mix(in srgb, var(--md-sys-color-error, #ef4444) 30%, transparent);
+  height: 36px;
+  padding: 0 1rem;
+  border-radius: var(--md-sys-shape-corner-full);
   font-size: 0.85rem;
   font-weight: 500;
+  letter-spacing: 0.1px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-speed) ease;
 }
 
 .btn-danger:hover {
-  background: rgba(239, 68, 68, 0.25);
-  border-color: #ef4444;
+  background: color-mix(in srgb, var(--md-sys-color-error, #ef4444) 25%, transparent);
 }

@@ -7,12 +7,16 @@ import { closeModal } from './modal.js';
 import { closeActiveContextMenu } from './bookmarks.js';
 
 export function initShortcuts() {
-  const searchInput = document.getElementById('search-input');
+  const searchBar = document.getElementById('search-bar');
   const bookmarkModal = document.getElementById('bookmark-modal');
   const settingsModal = document.getElementById('settings-modal');
 
   window.addEventListener('keydown', (e) => {
-    const isInputFocused = document.activeElement && ['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName);
+    const activeEl = document.activeElement;
+    const isInputFocused = activeEl && (
+      ['INPUT', 'TEXTAREA', 'MD-SEARCH-BAR', 'MD-TEXT-FIELD'].includes(activeEl.tagName) ||
+      (activeEl.shadowRoot && activeEl.shadowRoot.activeElement)
+    );
     const appDrawer = document.querySelector('md-app-drawer');
 
     // Escape key -> close modals, popovers, context menus or blur search
@@ -21,8 +25,11 @@ export function initShortcuts() {
       if (settingsModal) closeModal(settingsModal);
       if (appDrawer) appDrawer.open = false;
       closeActiveContextMenu();
-      if (isInputFocused) {
-        document.activeElement.blur();
+      if (searchBar && typeof searchBar.close === 'function') {
+        searchBar.close();
+      }
+      if (isInputFocused && activeEl) {
+        activeEl.blur();
       }
       return;
     }
@@ -55,10 +62,9 @@ export function initShortcuts() {
     }
 
     // '/' to focus search input
-    if (e.key === '/' && searchInput) {
+    if (e.key === '/' && searchBar) {
       e.preventDefault();
-      searchInput.focus();
-      searchInput.select();
+      searchBar.focus();
       return;
     }
 
@@ -73,3 +79,4 @@ export function initShortcuts() {
     }
   });
 }
+

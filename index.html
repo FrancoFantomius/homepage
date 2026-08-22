@@ -26,6 +26,8 @@
       "imports": {
         "@francofantomius/material-components": "./node_modules/@francofantomius/material-components/dist/index.js",
         "@francofantomius/material-components/switch": "./node_modules/@francofantomius/material-components/dist/components/switch/switch.js",
+        "@francofantomius/material-components/segmented-button": "./node_modules/@francofantomius/material-components/dist/components/segmented-button/segmented-button.js",
+        "@francofantomius/material-components/search-bar": "./node_modules/@francofantomius/material-components/dist/components/search-bar/search-bar.js",
         "@francofantomius/material-components/": "./node_modules/@francofantomius/material-components/",
         "lit": "./node_modules/lit/index.js",
         "lit/": "./node_modules/lit/",
@@ -77,20 +79,12 @@
 
       <!-- Search Section -->
       <section class="search-section">
-        <form id="search-form" action="https://www.startpage.com/do/dsearch" method="GET" class="search-form"
-          target="_self">
-          <div class="search-input-wrapper">
-            <img src="img/search.svg" class="icon-img search-icon" width="20" height="20" alt="Search">
-            <input type="text" name="query" id="search-input" class="search-input" placeholder="Search on Startpage"
-              autocomplete="off" spellcheck="false" autofocus>
-            <button type="button" id="clear-search-btn" class="clear-btn" aria-label="Clear Search" data-i18n-aria-label="search.clear">
-              <img src="img/close.svg" class="icon-img" width="16" height="16" alt="Clear">
-            </button>
-            <button type="submit" class="submit-search-btn" aria-label="Search" data-i18n-aria-label="search.submit">
-              <img src="img/arrow_forward.svg" class="icon-img submit-icon" width="20" height="20" alt="Search">
-            </button>
-          </div>
-        </form>
+        <md-search-bar
+          id="search-bar"
+          placeholder="Search on Startpage"
+          leading-icon="search"
+          collapse-on-mobile="false"
+        ></md-search-bar>
       </section>
 
       <!-- Bookmarks / Quick Links Grid -->
@@ -164,11 +158,11 @@
           <h4 data-i18n="settings.appearance">Appearance & Theme</h4>
           <div class="setting-row">
             <span data-i18n="settings.themeMode">Theme Mode</span>
-            <div class="segmented-control" id="theme-selector">
-              <button type="button" data-val="auto" data-i18n="settings.themeSystem">System</button>
-              <button type="button" data-val="dark" data-i18n="settings.themeDark">Dark</button>
-              <button type="button" data-val="light" data-i18n="settings.themeLight">Light</button>
-            </div>
+            <md-segmented-button-set id="theme-selector">
+              <md-segmented-button value="auto" label="System" data-i18n-label="settings.themeSystem" selected></md-segmented-button>
+              <md-segmented-button value="dark" label="Dark" data-i18n-label="settings.themeDark"></md-segmented-button>
+              <md-segmented-button value="light" label="Light" data-i18n-label="settings.themeLight"></md-segmented-button>
+            </md-segmented-button-set>
           </div>
           <div class="setting-row">
             <span data-i18n="settings.language">Language</span>

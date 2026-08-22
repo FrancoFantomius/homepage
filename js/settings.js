@@ -134,10 +134,11 @@ export function openLanguageDialog() {
 }
 
 export function syncSettingsUI() {
-  // Theme selector
+  // Theme selector (Material md-segmented-button-set)
   if (themeSelector) {
-    themeSelector.querySelectorAll('button').forEach(btn => {
-      btn.classList.toggle('active', btn.getAttribute('data-val') === state.config.theme);
+    const currentTheme = state.config.theme || 'auto';
+    themeSelector.querySelectorAll('md-segmented-button').forEach(btn => {
+      btn.selected = (btn.value === currentTheme || btn.getAttribute('value') === currentTheme);
     });
   }
 
@@ -255,14 +256,28 @@ export function initSettings() {
     });
   }
 
-  // Theme selector segmented control
+  // Theme selector (Material md-segmented-button-set)
   if (themeSelector) {
-    themeSelector.querySelectorAll('button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        state.config.theme = btn.getAttribute('data-val');
+    themeSelector.addEventListener('change', (e) => {
+      const selectedBtn = e.detail?.target || themeSelector.querySelector('md-segmented-button[selected]');
+      const val = e.detail?.value || selectedBtn?.value || selectedBtn?.getAttribute('value');
+      if (val && state.config.theme !== val) {
+        state.config.theme = val;
         saveConfig();
         applyConfig();
         syncSettingsUI();
+      }
+    });
+
+    themeSelector.querySelectorAll('md-segmented-button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const val = btn.value || btn.getAttribute('value');
+        if (val && state.config.theme !== val) {
+          state.config.theme = val;
+          saveConfig();
+          applyConfig();
+          syncSettingsUI();
+        }
       });
     });
   }

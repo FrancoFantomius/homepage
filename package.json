@@ -20,6 +20,6 @@
     "esbuild@0.28.2": true
   },
   "dependencies": {
-    "@francofantomius/material-components": "^1.0.2"
+    "@francofantomius/material-components": "^1.1.1"
   }
 }

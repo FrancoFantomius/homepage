@@ -1,4 +1,4 @@
-/* Bookmarks / Quick Links Grid & Cards */
+/* Bookmarks / Quick Links Grid & Cards - Material Design 3 */
 .bookmarks-section {
   width: 100%;
   max-width: 1200px;
@@ -12,14 +12,16 @@
   padding: 0 0.5rem;
 }
 
+/* M3 Title Medium */
 .section-title {
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 0.875rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
+  letter-spacing: 0.1px;
+  color: var(--text-secondary);
 }
 
+/* M3 Assist / Tonal Button */
 .btn-secondary {
   display: inline-flex;
   align-items: center;
@@ -27,12 +29,16 @@
   background: var(--bg-surface);
   color: var(--text-secondary);
   border: 1px solid var(--card-border);
-  padding: 0.35rem 0.75rem;
-  border-radius: var(--radius-md);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--md-sys-shape-corner-small);
   font-size: 0.825rem;
   font-weight: 500;
+  letter-spacing: 0.1px;
   cursor: pointer;
-  transition: all var(--transition-speed) var(--transition-bounce);
+  transition: background-color var(--transition-speed) ease,
+              color var(--transition-speed) ease,
+              border-color var(--transition-speed) ease,
+              transform var(--transition-speed) var(--transition-bounce);
 }
 
 .btn-secondary:hover {
@@ -42,67 +48,85 @@
   transform: translateY(-1px);
 }
 
+.btn-secondary:active {
+  transform: scale(0.96);
+}
+
 .bookmarks-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 1rem;
 }
 
-/* Bookmark Tile Card */
+/* M3 Elevated / Outlined Card */
 .bookmark-card {
   position: relative;
   background: var(--card-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
-  padding: 1rem 0.75rem;
+  border-radius: var(--md-sys-shape-corner-large);
+  padding: 1.1rem 0.75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.65rem;
   text-decoration: none;
   color: var(--text-primary);
   cursor: pointer;
-  transition: all var(--transition-speed) var(--transition-bounce);
+  box-shadow: var(--md-sys-elevation-level0);
+  transition: background-color var(--transition-speed) ease,
+              border-color var(--transition-speed) ease,
+              box-shadow var(--transition-speed) var(--transition-bounce),
+              transform var(--transition-speed) var(--transition-bounce);
 }
 
 .bookmark-card:hover {
   background: var(--card-hover);
   border-color: var(--card-border-hover);
+  box-shadow: var(--md-sys-elevation-level2);
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.15);
 }
 
+.bookmark-card:active {
+  transform: translateY(-1px);
+}
+
+/* M3 Icon Container */
 .bookmark-icon-container {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-sm);
-  background: var(--bg-surface);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: var(--md-sys-color-surface-container-highest);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--md-sys-elevation-level1);
+  transition: transform var(--transition-speed) var(--transition-bounce);
+}
+
+.bookmark-card:hover .bookmark-icon-container {
+  transform: scale(1.05);
 }
 
 .bookmark-icon {
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
   object-fit: contain;
   border-radius: 4px;
 }
 
 .bookmark-fallback-icon {
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: 1.15rem;
+  font-weight: 600;
   color: var(--accent-color);
   text-transform: uppercase;
 }
 
+/* M3 Label Large */
 .bookmark-title {
   font-size: 0.85rem;
   font-weight: 500;
+  letter-spacing: 0.1px;
   text-align: center;
   max-width: 100%;
   overflow: hidden;
@@ -112,35 +136,39 @@
 
 .bookmark-index-badge {
   position: absolute;
-  top: 6px;
-  left: 6px;
+  top: 8px;
+  left: 8px;
   font-size: 0.65rem;
   font-family: var(--font-mono);
+  font-weight: 600;
   color: var(--text-muted);
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transition: opacity var(--transition-speed) ease;
 }
 
 .bookmark-card:hover .bookmark-index-badge {
   opacity: 1;
 }
 
+/* M3 Card Action / Menu Trigger */
 .bookmark-menu-trigger {
   position: absolute;
-  top: 4px;
-  right: 4px;
-  width: 24px;
-  height: 24px;
+  top: 6px;
+  right: 6px;
+  width: 28px;
+  height: 28px;
   border: none;
   background: transparent;
   color: var(--text-muted);
-  border-radius: var(--radius-sm);
+  border-radius: var(--md-sys-shape-corner-full);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   opacity: 0;
-  transition: opacity 0.2s ease, color 0.2s ease, background 0.2s ease;
+  transition: opacity var(--transition-speed) ease,
+              color var(--transition-speed) ease,
+              background-color var(--transition-speed) ease;
 }
 
 .bookmark-card:hover .bookmark-menu-trigger {
@@ -152,37 +180,37 @@
   background: var(--bg-surface-active);
 }
 
-/* Context Menu / Options Dropdown */
+/* M3 Menu Surface */
 .context-menu {
   position: absolute;
-  top: 32px;
+  top: 36px;
   right: 6px;
   background: var(--modal-bg);
   border: 1px solid var(--card-border);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: var(--radius-sm);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  border-radius: var(--md-sys-shape-corner-medium);
+  box-shadow: var(--md-sys-elevation-level2);
   display: flex;
   flex-direction: column;
-  padding: 0.3rem;
+  padding: 4px;
   z-index: 10;
-  min-width: 110px;
+  min-width: 120px;
 }
 
 .context-menu button {
   background: transparent;
   border: none;
   color: var(--text-primary);
-  font-size: 0.8rem;
+  font-size: 0.825rem;
+  font-weight: 500;
+  letter-spacing: 0.1px;
   text-align: left;
-  padding: 0.4rem 0.6rem;
-  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--md-sys-shape-corner-extra-small);
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  transition: background 0.15s ease;
+  gap: 0.5rem;
+  transition: background-color var(--transition-speed) ease;
 }
 
 .context-menu button:hover {
@@ -190,9 +218,9 @@
 }
 
 .context-menu button.delete-btn {
-  color: #ef4444;
+  color: var(--md-sys-color-error, #ef4444);
 }
 
 .context-menu button.delete-btn:hover {
-  background: rgba(239, 68, 68, 0.15);
+  background: color-mix(in srgb, var(--md-sys-color-error, #ef4444) 15%, transparent);
 }

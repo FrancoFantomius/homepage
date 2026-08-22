@@ -249,6 +249,16 @@ export function applyTranslations() {
     el.setAttribute('headline', t(key));
   });
 
+  // label attribute (e.g. md-segmented-button, md-button, etc.)
+  document.querySelectorAll('[data-i18n-label]').forEach(el => {
+    const key = el.getAttribute('data-i18n-label');
+    const translated = t(key);
+    el.setAttribute('label', translated);
+    if ('label' in el) {
+      el.label = translated;
+    }
+  });
+
   // innerHTML
   document.querySelectorAll('[data-i18n-html]').forEach(el => {
     const key = el.getAttribute('data-i18n-html');

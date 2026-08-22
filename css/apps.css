@@ -1,4 +1,4 @@
-/* App Launcher / Material App Drawer Styles */
+/* App Launcher / Material App Drawer Styles - Material Design 3 */
 
 md-app-drawer {
   position: relative;
@@ -7,9 +7,9 @@ md-app-drawer {
   --md-app-drawer-width: 324px;
   --md-app-drawer-max-height: 440px;
   --md-app-drawer-columns: 3;
-  --md-sys-shape-corner-extra-large: 24px;
-  --md-sys-shape-corner-medium: 16px;
-  --md-sys-elevation-level3: 0 10px 30px -5px rgba(0, 0, 0, 0.35), 0 0 0 1px var(--card-border);
+  --md-sys-shape-corner-extra-large: var(--md-sys-shape-corner-extra-large);
+  --md-sys-shape-corner-medium: var(--md-sys-shape-corner-large);
+  --md-sys-elevation-level3: var(--md-sys-elevation-level3);
   --md-sys-color-surface-container-high: var(--drawer-bg);
   --md-sys-color-on-surface: var(--text-primary);
   --md-sys-color-on-surface-variant: var(--text-secondary);
@@ -22,11 +22,11 @@ md-app-drawer {
 }
 
 .waffle-btn {
-  border-radius: var(--radius-full);
+  border-radius: var(--md-sys-shape-corner-full);
 }
 
 md-app-drawer-item {
-  --md-sys-shape-corner-medium: 14px;
+  --md-sys-shape-corner-medium: var(--md-sys-shape-corner-medium);
   --md-sys-color-on-surface: var(--text-primary);
   --md-sys-color-primary: var(--accent-color);
 }

@@ -15,11 +15,13 @@ import { initShortcuts } from './js/shortcuts.js';
 import { initPWA } from './js/pwa.js';
 import '@francofantomius/material-components';
 import '@francofantomius/material-components/switch';
+import '@francofantomius/material-components/segmented-button';
+import '@francofantomius/material-components/search-bar';
 
 // Map local downloaded SVGs for Material Components md-icon without external fonts
 const MdIcon = customElements.get('md-icon');
 if (MdIcon) {
-  const LOCAL_ICONS = ['apps', 'edit', 'check', 'arrow_back', 'settings', 'add', 'close', 'delete', 'more_vert', 'open_in_new', 'refresh', 'search'];
+  const LOCAL_ICONS = ['apps', 'edit', 'check', 'arrow_back', 'arrow_forward', 'settings', 'add', 'close', 'delete', 'more_vert', 'open_in_new', 'refresh', 'search', 'history'];
   const origUpdated = MdIcon.prototype.updated;
   MdIcon.prototype.updated = function (changed) {
     if (origUpdated) origUpdated.call(this, changed);

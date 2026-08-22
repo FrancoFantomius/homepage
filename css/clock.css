@@ -1,23 +1,26 @@
-/* Time & Greeting Section */
+/* Time & Greeting Section - Material Design 3 */
 .time-section {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.35rem;
+  user-select: none;
 }
 
+/* M3 Display Large */
 .digital-clock {
-  font-size: 4.5rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  font-size: clamp(3.5rem, 8vw, 5.25rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
   color: var(--text-primary);
-  line-height: 1.1;
+  line-height: 1.05;
   font-feature-settings: "tnum";
   font-variant-numeric: tabular-nums;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: color var(--transition-speed) ease;
 }
 
+/* M3 Headline Small / Title Large */
 .greeting-container {
   display: flex;
   align-items: center;
@@ -26,6 +29,8 @@
 
 .greeting-text {
   font-size: 1.25rem;
-  font-weight: 500;
+  font-weight: 400;
+  letter-spacing: 0.1px;
   color: var(--text-secondary);
+  transition: color var(--transition-speed) ease;
 }
