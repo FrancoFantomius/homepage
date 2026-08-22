@@ -21,6 +21,30 @@
       } catch (e) { }
     })();
   </script>
+  <script type="importmap">
+    {
+      "imports": {
+        "@francofantomius/material-components/button": "./node_modules/@francofantomius/material-components/dist/components/button/button.js",
+        "@francofantomius/material-components/icon-button": "./node_modules/@francofantomius/material-components/dist/components/icon-button/icon-button.js",
+        "@francofantomius/material-components/icon": "./node_modules/@francofantomius/material-components/dist/components/icon/icon.js",
+        "@francofantomius/material-components/chip": "./node_modules/@francofantomius/material-components/dist/components/chip/chip.js",
+        "@francofantomius/material-components/app-drawer": "./node_modules/@francofantomius/material-components/dist/components/app-drawer/app-drawer.js",
+        "@francofantomius/material-components/search-bar": "./node_modules/@francofantomius/material-components/dist/components/search-bar/search-bar.js",
+        "@francofantomius/material-components/segmented-button": "./node_modules/@francofantomius/material-components/dist/components/segmented-button/segmented-button.js",
+        "@francofantomius/material-components/switch": "./node_modules/@francofantomius/material-components/dist/components/switch/switch.js",
+        "@francofantomius/material-components/dialog": "./node_modules/@francofantomius/material-components/dist/components/dialog/dialog.js",
+        "@francofantomius/material-components/radio": "./node_modules/@francofantomius/material-components/dist/components/radio/radio.js",
+        "@francofantomius/material-components/": "./node_modules/@francofantomius/material-components/",
+        "lit": "./node_modules/lit/index.js",
+        "lit/": "./node_modules/lit/",
+        "@lit/reactive-element": "./node_modules/@lit/reactive-element/reactive-element.js",
+        "@lit/reactive-element/": "./node_modules/@lit/reactive-element/",
+        "lit-html": "./node_modules/lit-html/lit-html.js",
+        "lit-html/": "./node_modules/lit-html/",
+        "lit-element/": "./node_modules/lit-element/"
+      }
+    }
+  </script>
   <link rel="preconnect" href="https://icons.duckduckgo.com" crossorigin>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="manifest" href="manifest.webmanifest">
@@ -29,38 +53,23 @@
 </head>
 
 <body>
-  <!-- Background Glow / Effects -->
-  <div class="bg-effects">
-    <div class="glow-orb glow-orb-1"></div>
-    <div class="glow-orb glow-orb-2"></div>
-  </div>
-
   <div class="app-container">
     <!-- Header / Top Bar -->
     <header class="top-nav">
       <div class="nav-left">
-        <div class="date-badge" id="current-date" data-i18n="general.today">Today</div>
+        <md-chip id="current-date" data-i18n="general.today">Today</md-chip>
       </div>
       <div class="nav-right">
-        <!-- App Launcher / Waffle Menu -->
-        <div class="apps-container" id="apps-container">
-          <button id="apps-drawer-btn" class="icon-btn waffle-btn" title="Apps" data-i18n-title="header.apps" aria-label="Open App Launcher" data-i18n-aria-label="header.appsAria" aria-haspopup="true" aria-expanded="false">
-            <img src="img/apps.svg" class="icon-img" width="20" height="20" alt="Apps">
-          </button>
+        <!-- App Launcher / Material App Drawer -->
+        <md-app-drawer headline="My Apps" data-i18n-headline="header.apps">
+          <md-app-drawer-item label="Calculator" href="https://francofantomius.com/calculator/" target="_blank" src="https://francofantomius.com/calculator/img/calculator_x128.png"></md-app-drawer-item>
+          <md-app-drawer-item label="Melo" href="https://melo.francofantomius.com/" target="_blank" src="https://melo.francofantomius.com/img/icons/icon.svg"></md-app-drawer-item>
+          <md-app-drawer-item label="Noten" href="https://noten.francofantomius.com/" target="_blank" src="https://noten.francofantomius.com/noten_x512.png"></md-app-drawer-item>
+          <md-app-drawer-item label="Scriben" href="https://scriben.francofantomius.com/" target="_blank" src="https://scriben.francofantomius.com/icons/icon.svg"></md-app-drawer-item>
+          <md-app-drawer-item label="Maps" href="https://maps.francofantomius.com/" target="_blank" src="https://maps.francofantomius.com/img/icons/maps.png"></md-app-drawer-item>
+        </md-app-drawer>
 
-          <!-- App Launcher Popover -->
-          <div class="apps-popover" id="apps-popover" aria-hidden="true" role="dialog" aria-label="App Launcher">
-            <div class="apps-scrollable">
-              <div class="apps-grid" id="apps-grid">
-                <!-- Dynamically populated app tiles -->
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <button id="settings-btn" class="icon-btn" title="Settings" data-i18n-title="header.settings" aria-label="Open Settings" data-i18n-aria-label="header.settingsAria">
-          <img src="img/settings.svg" class="icon-img" width="20" height="20" alt="Settings">
-        </button>
+        <md-icon-button id="settings-btn" icon="settings" title="Settings" data-i18n-title="header.settings" aria-label="Open Settings" data-i18n-aria-label="header.settingsAria"></md-icon-button>
       </div>
     </header>
 
@@ -76,20 +85,12 @@
 
       <!-- Search Section -->
       <section class="search-section">
-        <form id="search-form" action="https://www.startpage.com/do/dsearch" method="GET" class="search-form"
-          target="_self">
-          <div class="search-input-wrapper">
-            <img src="img/search.svg" class="icon-img search-icon" width="20" height="20" alt="Search">
-            <input type="text" name="query" id="search-input" class="search-input" placeholder="Search on Startpage"
-              autocomplete="off" spellcheck="false" autofocus>
-            <button type="button" id="clear-search-btn" class="clear-btn" aria-label="Clear Search" data-i18n-aria-label="search.clear">
-              <img src="img/close.svg" class="icon-img" width="16" height="16" alt="Clear">
-            </button>
-            <button type="submit" class="submit-search-btn" aria-label="Search" data-i18n-aria-label="search.submit">
-              <img src="img/arrow_forward.svg" class="icon-img submit-icon" width="20" height="20" alt="Search">
-            </button>
-          </div>
-        </form>
+        <md-search-bar
+          id="search-bar"
+          placeholder="Search on Startpage"
+          leading-icon="search"
+          collapse-on-mobile="false"
+        ></md-search-bar>
       </section>
 
       <!-- Bookmarks / Quick Links Grid -->
@@ -163,48 +164,23 @@
           <h4 data-i18n="settings.appearance">Appearance & Theme</h4>
           <div class="setting-row">
             <span data-i18n="settings.themeMode">Theme Mode</span>
-            <div class="segmented-control" id="theme-selector">
-              <button type="button" data-val="auto" data-i18n="settings.themeSystem">System</button>
-              <button type="button" data-val="dark" data-i18n="settings.themeDark">Dark</button>
-              <button type="button" data-val="light" data-i18n="settings.themeLight">Light</button>
-            </div>
+            <md-segmented-button-set id="theme-selector">
+              <md-segmented-button value="auto" label="System" data-i18n-label="settings.themeSystem" selected></md-segmented-button>
+              <md-segmented-button value="dark" label="Dark" data-i18n-label="settings.themeDark"></md-segmented-button>
+              <md-segmented-button value="light" label="Light" data-i18n-label="settings.themeLight"></md-segmented-button>
+            </md-segmented-button-set>
           </div>
           <div class="setting-row">
             <span data-i18n="settings.language">Language</span>
-            <div class="custom-dropdown" id="settings-lang-dropdown">
-              <button type="button" class="custom-dropdown-trigger" id="settings-lang-trigger" aria-haspopup="listbox" aria-expanded="false" title="Choose Language">
-                <span class="custom-dropdown-name" id="settings-lang-name">Auto (System)</span>
-                <img src="img/expand_more.svg" class="icon-img custom-dropdown-arrow" width="18" height="18" alt="">
-              </button>
-              <div class="custom-dropdown-menu" id="settings-lang-menu" role="listbox" aria-hidden="true">
-                <!-- Dynamically populated options -->
-              </div>
-            </div>
-          </div>
-          <div class="setting-row">
-            <span data-i18n="settings.glow">Background Glow Effects</span>
-            <label class="toggle-switch">
-              <input type="checkbox" id="toggle-glow" checked>
-              <span class="slider"></span>
-            </label>
+            <md-button variant="outlined" id="settings-lang-trigger" data-i18n="settings.changeLanguage">Change language</md-button>
           </div>
         </div>
-
         <!-- Search Behavior -->
         <div class="settings-group">
           <h4 data-i18n="settings.searchHeader">Search</h4>
           <div class="setting-row">
             <span data-i18n="settings.searchEngine">Search Engine</span>
-            <div class="custom-dropdown" id="settings-engine-dropdown">
-              <button type="button" class="custom-dropdown-trigger" id="settings-engine-trigger" aria-haspopup="listbox" aria-expanded="false" title="Choose Search Engine">
-                <img src="https://icons.duckduckgo.com/ip3/startpage.com.ico" class="custom-dropdown-icon" id="settings-engine-icon" width="18" height="18" alt="Engine">
-                <span class="custom-dropdown-name" id="settings-engine-name">Startpage</span>
-                <img src="img/expand_more.svg" class="icon-img custom-dropdown-arrow" width="18" height="18" alt="">
-              </button>
-              <div class="custom-dropdown-menu" id="settings-engine-menu" role="listbox" aria-hidden="true">
-                <!-- Dynamically populated options with favicons -->
-              </div>
-            </div>
+            <md-button variant="outlined" id="settings-engine-trigger" data-i18n="settings.changeSearchEngine">Change search engine</md-button>
           </div>
         </div>
 
@@ -213,36 +189,50 @@
           <h4 data-i18n="settings.clockHeader">Clock & Widgets</h4>
           <div class="setting-row">
             <span data-i18n="settings.clock24h">24-Hour Clock</span>
-            <label class="toggle-switch">
-              <input type="checkbox" id="toggle-24h" checked>
-              <span class="slider"></span>
-            </label>
+            <md-switch id="toggle-24h" selected aria-label="24-Hour Clock"></md-switch>
           </div>
           <div class="setting-row">
             <span data-i18n="settings.clockSeconds">Show Seconds</span>
-            <label class="toggle-switch">
-              <input type="checkbox" id="toggle-seconds">
-              <span class="slider"></span>
-            </label>
+            <md-switch id="toggle-seconds" aria-label="Show Seconds"></md-switch>
           </div>
           <div class="setting-row">
             <span data-i18n="settings.greeting">Show Greeting</span>
-            <label class="toggle-switch">
-              <input type="checkbox" id="toggle-greeting" checked>
-              <span class="slider"></span>
-            </label>
+            <md-switch id="toggle-greeting" selected aria-label="Show Greeting"></md-switch>
           </div>
           <div class="setting-row">
             <span data-i18n="settings.dateHeader">Show Date Header</span>
-            <label class="toggle-switch">
-              <input type="checkbox" id="toggle-date" checked>
-              <span class="slider"></span>
-            </label>
+            <md-switch id="toggle-date" selected aria-label="Show Date Header"></md-switch>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Modal Dialog: Language Settings -->
+  <md-dialog id="language-dialog" headline="Language" data-i18n-headline="settings.language">
+    <div class="language-dialog-content">
+      <md-radio-group name="language-selector" id="language-radio-group">
+        <!-- Dynamically populated vertical options -->
+      </md-radio-group>
+    </div>
+    <div slot="actions">
+      <md-button variant="text" id="cancel-language-btn" data-i18n="settings.cancel">Cancel</md-button>
+      <md-button variant="filled" id="confirm-language-btn" data-i18n="settings.changeLanguage">Change language</md-button>
+    </div>
+  </md-dialog>
+
+  <!-- Modal Dialog: Search Engine Settings -->
+  <md-dialog id="engine-dialog" headline="Search Engine" data-i18n-headline="settings.searchEngine">
+    <div class="engine-dialog-content">
+      <md-radio-group name="engine-selector" id="engine-radio-group">
+        <!-- Dynamically populated options with favicons -->
+      </md-radio-group>
+    </div>
+    <div slot="actions">
+      <md-button variant="text" id="cancel-engine-btn" data-i18n="settings.cancel">Cancel</md-button>
+      <md-button variant="filled" id="confirm-engine-btn" data-i18n="settings.changeSearchEngine">Change search engine</md-button>
+    </div>
+  </md-dialog>
 
   <script type="module" src="app.js"></script>
 </body>

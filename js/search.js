@@ -5,20 +5,14 @@
 import { state, SEARCH_ENGINES, getCurrentSearchEngine, saveConfig } from './state.js';
 import { t } from './i18n.js';
 
-const searchForm = document.getElementById('search-form');
-const searchInput = document.getElementById('search-input');
-const clearSearchBtn = document.getElementById('clear-search-btn');
-
 export function updateSearchEngineUI(engineId) {
   const currentEngine = SEARCH_ENGINES.find(e => e.id === engineId) || SEARCH_ENGINES[0];
+  const searchBar = document.getElementById('search-bar');
 
-  if (searchInput) {
-    searchInput.placeholder = t('search.placeholder', { engine: currentEngine.name });
-    searchInput.name = currentEngine.queryParam;
-  }
-
-  if (searchForm) {
-    searchForm.action = currentEngine.url;
+  if (searchBar) {
+    const placeholderText = t('search.placeholder', { engine: currentEngine.name });
+    searchBar.placeholder = placeholderText;
+    searchBar.setAttribute('placeholder', placeholderText);
   }
 }
 
@@ -46,34 +40,34 @@ export function executeSearch(query) {
 }
 
 export function initSearch() {
-  if (!searchInput || !searchForm) return;
+  const searchBar = document.getElementById('search-bar');
+  if (!searchBar) return;
 
   // Initialize engine UI & placeholder
   updateSearchEngineUI(state.config.searchEngine || 'startpage');
 
-  // Input listener for clear button visibility
-  searchInput.addEventListener('input', () => {
-    const val = searchInput.value;
-    if (clearSearchBtn) {
-      clearSearchBtn.classList.toggle('visible', val.length > 0);
-    }
-  });
-
-  if (clearSearchBtn) {
-    clearSearchBtn.addEventListener('click', () => {
-      searchInput.value = '';
-      clearSearchBtn.classList.remove('visible');
-      searchInput.focus();
-    });
-  }
-
-  // Handle form submission
-  searchForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const query = searchInput.value.trim();
+  // Handle search event from md-search-bar (fires on Enter key)
+  searchBar.addEventListener('search', (e) => {
+    const query = (e.detail?.value !== undefined ? e.detail.value : searchBar.value || '').trim();
     if (query) {
       executeSearch(query);
     }
   });
+
+  // Handle trailing-icon-click if trailing action is clicked
+  searchBar.addEventListener('trailing-icon-click', () => {
+    const query = (searchBar.value || '').trim();
+    if (query) {
+      executeSearch(query);
+    }
+  });
+
+  // Focus search input after component is ready
+  if (typeof searchBar.focus === 'function') {
+    setTimeout(() => {
+      searchBar.focus();
+    }, 60);
+  }
 }
+
 

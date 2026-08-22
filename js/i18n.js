@@ -60,12 +60,14 @@ const DEFAULT_EN_TRANSLATIONS = {
     general: "General & Language",
     language: "Language",
     languageAuto: "Auto ({lang})",
+    changeLanguage: "Change language",
+    changeSearchEngine: "Change search engine",
+    cancel: "Cancel",
     appearance: "Appearance & Theme",
     themeMode: "Theme Mode",
     themeSystem: "System",
     themeDark: "Dark",
     themeLight: "Light",
-    glow: "Background Glow Effects",
     searchHeader: "Search",
     searchEngine: "Search Engine",
     clockHeader: "Clock & Widgets",
@@ -239,6 +241,22 @@ export function applyTranslations() {
   document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
     const key = el.getAttribute('data-i18n-aria-label');
     el.setAttribute('aria-label', t(key));
+  });
+
+  // headline attribute
+  document.querySelectorAll('[data-i18n-headline]').forEach(el => {
+    const key = el.getAttribute('data-i18n-headline');
+    el.setAttribute('headline', t(key));
+  });
+
+  // label attribute (e.g. md-segmented-button, md-button, etc.)
+  document.querySelectorAll('[data-i18n-label]').forEach(el => {
+    const key = el.getAttribute('data-i18n-label');
+    const translated = t(key);
+    el.setAttribute('label', translated);
+    if ('label' in el) {
+      el.label = translated;
+    }
   });
 
   // innerHTML

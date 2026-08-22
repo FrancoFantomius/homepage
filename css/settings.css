@@ -1,4 +1,4 @@
-/* Settings Modal Specifics */
+/* Settings Modal Specifics - Material Design 3 */
 .settings-card {
   max-width: 520px;
 }
@@ -12,8 +12,8 @@
 .settings-group {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  padding-bottom: 1rem;
+  gap: 0.85rem;
+  padding-bottom: 1.15rem;
   border-bottom: 1px solid var(--card-border);
 }
 
@@ -22,11 +22,13 @@
   padding-bottom: 0;
 }
 
+/* M3 Title Small / Label Large */
 .settings-group h4 {
-  font-size: 0.825rem;
+  font-size: 0.8rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  color: var(--md-sys-color-primary);
 }
 
 .setting-row {
@@ -34,241 +36,114 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.925rem;
+  font-weight: 400;
+  letter-spacing: 0.1px;
   gap: 1rem;
 }
 
-/* Custom Dropdowns (Search Engine & Language) in Settings */
-.custom-engine-dropdown,
-.custom-dropdown {
-  position: relative;
-  min-width: 170px;
-}
-
-.custom-engine-trigger,
-.custom-dropdown-trigger {
-  width: 100%;
-  background: var(--input-bg);
-  border: 1px solid var(--input-border);
-  border-radius: var(--radius-sm);
-  padding: 0.45rem 0.75rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  cursor: pointer;
-  color: var(--text-primary);
-  font-size: 0.875rem;
-  font-family: inherit;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-}
-
-.custom-engine-trigger:hover,
-.custom-dropdown-trigger:hover {
-  background: var(--bg-surface-hover);
-  border-color: var(--card-border-hover);
-}
-
-.custom-engine-dropdown.open .custom-engine-trigger,
-.custom-dropdown.open .custom-dropdown-trigger {
-  border-color: var(--accent-color);
-  box-shadow: 0 0 0 2px var(--accent-glow);
-}
-
-.custom-engine-icon,
-.custom-dropdown-icon {
-  width: 18px;
-  height: 18px;
-  border-radius: 3px;
-  object-fit: contain;
+/* Material Segmented Button Set */
+md-segmented-button-set {
+  --md-sys-color-outline: var(--card-border);
+  --md-sys-color-secondary-container: var(--md-sys-color-primary-container);
+  --md-sys-color-on-secondary-container: var(--md-sys-color-on-primary-container);
+  --md-sys-color-on-surface: var(--text-secondary);
   flex-shrink: 0;
 }
 
-.custom-engine-name,
-.custom-dropdown-name {
-  flex: 1;
-  text-align: left;
-  font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+md-segmented-button {
+  padding: 0 16px;
+  --md-sys-color-on-surface: var(--text-secondary);
+  --md-sys-color-secondary-container: var(--md-sys-color-primary-container);
+  --md-sys-color-on-secondary-container: var(--md-sys-color-on-primary-container);
 }
 
-.custom-dropdown-arrow {
-  color: var(--text-muted);
-  transition: transform 0.2s ease;
+md-segmented-button:hover:not([disabled]) {
+  --md-sys-color-on-surface: var(--text-primary);
+}
+
+/* Material Switch */
+md-switch {
+  --md-sys-color-primary: var(--accent-color);
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-surface-container-highest: var(--input-bg);
+  --md-sys-color-outline: var(--text-muted);
+  --md-sys-color-on-surface: var(--text-primary);
   flex-shrink: 0;
 }
 
-.custom-engine-dropdown.open .custom-dropdown-arrow,
-.custom-dropdown.open .custom-dropdown-arrow {
-  transform: rotate(180deg);
+/* Language & Search Engine Selection Dialog & Radio Group */
+md-dialog::part(dialog)::backdrop,
+dialog::backdrop {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background-color: var(--modal-overlay);
 }
 
-.custom-engine-menu,
-.custom-dropdown-menu {
-  position: absolute;
-  top: calc(100% + 6px);
-  right: 0;
-  left: 0;
-  background: var(--modal-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-  padding: 0.35rem;
+#language-dialog,
+#engine-dialog {
+  --md-sys-color-surface-container-high: var(--modal-bg);
+  --md-sys-color-on-surface: var(--text-primary);
+  --md-sys-color-on-surface-variant: var(--text-secondary);
+  --md-sys-color-primary: var(--accent-color);
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-shape-corner-extra-large: var(--md-sys-shape-corner-extra-large);
+}
+
+.language-dialog-content,
+.engine-dialog-content {
+  width: 440px;
+  max-width: 100%;
+  min-width: min(380px, 80vw);
+  max-height: 340px;
+  overflow-y: auto;
+  padding: 4px 6px 4px 2px;
+  margin: 4px 0 8px 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--card-border) transparent;
+  box-sizing: border-box;
+}
+
+#language-radio-group,
+#engine-radio-group {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
-  z-index: 100;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-6px) scale(0.97);
-  transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s ease;
-  max-height: 220px;
-  overflow-y: auto;
+  gap: 4px;
 }
 
-.custom-engine-dropdown.open .custom-engine-menu,
-.custom-dropdown.open .custom-dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0) scale(1);
-}
-
-.custom-engine-item,
-.custom-dropdown-item {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.45rem 0.65rem;
-  border: none;
-  background: transparent;
+#language-radio-group md-radio,
+#engine-radio-group md-radio {
+  padding: 8px 12px;
+  border-radius: var(--md-sys-shape-corner-small);
+  transition: background-color var(--transition-speed) ease;
+  font-size: 0.95rem;
   color: var(--text-primary);
-  font-size: 0.85rem;
-  font-family: inherit;
-  font-weight: 500;
-  border-radius: var(--radius-sm);
   cursor: pointer;
   width: 100%;
-  text-align: left;
-  transition: background 0.15s ease, color 0.15s ease;
+  box-sizing: border-box;
 }
 
-.custom-engine-item:hover,
-.custom-dropdown-item:hover {
-  background: var(--bg-surface-hover);
+#language-radio-group md-radio:hover,
+#engine-radio-group md-radio:hover {
+  background-color: var(--bg-surface-hover);
 }
 
-.custom-engine-item.active,
-.custom-dropdown-item.active {
-  background: var(--accent-glow);
-  color: var(--accent-color);
-  font-weight: 600;
-}
-
-.custom-engine-item-icon,
-.custom-dropdown-item-icon {
-  width: 16px;
-  height: 16px;
-  border-radius: 3px;
+.engine-dialog-radio-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
   object-fit: contain;
-  flex-shrink: 0;
+  margin-right: 10px;
+  vertical-align: middle;
+  pointer-events: none;
 }
 
-.custom-engine-item-name,
-.custom-dropdown-item-name {
-  flex: 1;
+.engine-dialog-radio-name {
+  vertical-align: middle;
+  pointer-events: none;
 }
 
-.custom-engine-item-check,
-.custom-dropdown-item-check {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-  color: var(--accent-color);
-  opacity: 0;
-  transform: scale(0.6);
-  transition: opacity 0.2s ease, transform 0.2s var(--transition-bounce);
-}
-
-.custom-engine-item.active .custom-engine-item-check,
-.custom-dropdown-item.active .custom-dropdown-item-check {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Segmented Control */
-.segmented-control {
-  display: flex;
-  background: var(--input-bg);
-  border: 1px solid var(--input-border);
-  border-radius: var(--radius-sm);
-  padding: 3px;
-  gap: 2px;
-}
-
-.segmented-control button {
-  background: transparent;
-  border: none;
-  color: var(--text-secondary);
-  font-size: 0.8rem;
-  font-weight: 500;
-  padding: 0.3rem 0.7rem;
-  border-radius: calc(var(--radius-sm) - 2px);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.segmented-control button.active {
-  background: var(--accent-color);
-  color: #ffffff;
-}
-
-/* Toggle Switch */
-.toggle-switch {
-  position: relative;
-  display: inline-block;
-  width: 44px;
-  height: 24px;
-}
-
-.toggle-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--input-bg);
-  border: 1px solid var(--input-border);
-  transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  border-radius: 34px;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 16px;
-  width: 16px;
-  left: 3px;
-  bottom: 3px;
-  background-color: var(--text-secondary);
-  transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  border-radius: 50%;
-}
-
-input:checked+.slider {
-  background-color: var(--accent-color);
-  border-color: var(--accent-color);
-}
-
-input:checked+.slider:before {
-  transform: translateX(20px);
-  background-color: #ffffff;
+#settings-lang-trigger,
+#settings-engine-trigger {
+  margin-left: auto;
+  --md-sys-shape-corner-full: var(--md-sys-shape-corner-small);
 }

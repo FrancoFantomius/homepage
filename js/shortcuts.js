@@ -5,25 +5,31 @@
 import { state } from './state.js';
 import { closeModal } from './modal.js';
 import { closeActiveContextMenu } from './bookmarks.js';
-import { closeAppsPopover } from './apps.js';
 
 export function initShortcuts() {
-  const searchInput = document.getElementById('search-input');
+  const searchBar = document.getElementById('search-bar');
   const bookmarkModal = document.getElementById('bookmark-modal');
   const settingsModal = document.getElementById('settings-modal');
-  const appsPopover = document.getElementById('apps-popover');
 
   window.addEventListener('keydown', (e) => {
-    const isInputFocused = document.activeElement && ['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName);
+    const activeEl = document.activeElement;
+    const isInputFocused = activeEl && (
+      ['INPUT', 'TEXTAREA', 'MD-SEARCH-BAR', 'MD-TEXT-FIELD'].includes(activeEl.tagName) ||
+      (activeEl.shadowRoot && activeEl.shadowRoot.activeElement)
+    );
+    const appDrawer = document.querySelector('md-app-drawer');
 
     // Escape key -> close modals, popovers, context menus or blur search
     if (e.key === 'Escape') {
       if (bookmarkModal) closeModal(bookmarkModal);
       if (settingsModal) closeModal(settingsModal);
-      closeAppsPopover();
+      if (appDrawer) appDrawer.open = false;
       closeActiveContextMenu();
-      if (isInputFocused) {
-        document.activeElement.blur();
+      if (searchBar && typeof searchBar.close === 'function') {
+        searchBar.close();
+      }
+      if (isInputFocused && activeEl) {
+        activeEl.blur();
       }
       return;
     }
@@ -41,10 +47,10 @@ export function initShortcuts() {
       }
     }
 
-    // If typing inside an input field or a modal/popover is open, ignore subsequent shortcuts
+    // If typing inside an input field or a modal/drawer is open, ignore subsequent shortcuts
     const isModalOpen = (bookmarkModal && bookmarkModal.classList.contains('open')) ||
                         (settingsModal && settingsModal.classList.contains('open')) ||
-                        (appsPopover && appsPopover.classList.contains('open'));
+                        (appDrawer && (appDrawer.hasAttribute('open') || appDrawer.open));
 
     if (isInputFocused || isModalOpen) {
       return;
@@ -56,10 +62,9 @@ export function initShortcuts() {
     }
 
     // '/' to focus search input
-    if (e.key === '/' && searchInput) {
+    if (e.key === '/' && searchBar) {
       e.preventDefault();
-      searchInput.focus();
-      searchInput.select();
+      searchBar.focus();
       return;
     }
 
@@ -74,3 +79,4 @@ export function initShortcuts() {
     }
   });
 }
+

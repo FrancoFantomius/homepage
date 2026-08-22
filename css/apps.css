@@ -1,145 +1,32 @@
-/* App Launcher / Waffle Menu Styles */
+/* App Launcher / Material App Drawer Styles - Material Design 3 */
 
-.apps-container {
+md-app-drawer {
   position: relative;
   display: inline-flex;
   align-items: center;
+  --md-app-drawer-width: 324px;
+  --md-app-drawer-max-height: 440px;
+  --md-app-drawer-columns: 3;
+  --md-sys-shape-corner-extra-large: var(--md-sys-shape-corner-extra-large);
+  --md-sys-shape-corner-medium: var(--md-sys-shape-corner-large);
+  --md-sys-elevation-level3: var(--md-sys-elevation-level3);
+  --md-sys-color-surface-container-high: var(--drawer-bg);
+  --md-sys-color-on-surface: var(--text-primary);
+  --md-sys-color-on-surface-variant: var(--text-secondary);
+  --md-sys-color-primary: var(--accent-color);
+  --md-sys-color-surface-container-highest: var(--bg-surface-hover);
+  --md-sys-color-outline-variant: var(--card-border);
+  --md-sys-color-secondary-container: var(--bg-surface-active);
+  --md-sys-color-on-secondary-container: var(--text-primary);
+  --md-sys-typescale-font-family: var(--font-family);
 }
 
 .waffle-btn {
-  border-radius: var(--radius-full);
+  border-radius: var(--md-sys-shape-corner-full);
 }
 
-/* Floating App Launcher Popover */
-.apps-popover {
-  position: absolute;
-  top: calc(100% + 10px);
-  right: 0;
-  width: 324px;
-  background: var(--modal-bg);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border: 1px solid var(--card-border);
-  border-radius: 26px;
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.35), 0 0 0 1px var(--card-border);
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  opacity: 0;
-  visibility: hidden;
-  transform: scale(0.92) translateY(-10px);
-  transform-origin: top right;
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.18s ease, visibility 0.18s ease;
-  padding: 12px 10px;
-}
-
-.apps-popover.open {
-  opacity: 1;
-  visibility: visible;
-  transform: scale(1) translateY(0);
-}
-
-/* Scrollable Apps Area */
-.apps-scrollable {
-  max-height: 400px;
-  overflow-y: auto;
-  padding: 2px 2px;
-  scrollbar-width: thin;
-}
-
-.apps-scrollable::-webkit-scrollbar {
-  width: 5px;
-}
-
-.apps-scrollable::-webkit-scrollbar-thumb {
-  background: var(--card-border);
-  border-radius: var(--radius-full);
-}
-
-/* 3-Column Apps Grid */
-.apps-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 6px 4px;
-}
-
-/* Individual App Item */
-.app-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 4px 8px;
-  border-radius: 20px;
-  text-decoration: none;
-  position: relative;
-  cursor: pointer;
-  transition: background-color 0.15s ease, transform 0.15s ease;
-}
-
-.app-item:hover {
-  background-color: var(--bg-surface-hover);
-  transform: translateY(-2px);
-}
-
-.app-item:active {
-  transform: translateY(0);
-  background-color: var(--bg-surface-active);
-}
-
-.app-icon-wrapper {
-  position: relative;
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
-  background: var(--bg-surface);
-  border: 1px solid var(--card-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 6px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-  overflow: hidden;
-}
-
-.app-item:hover .app-icon-wrapper {
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  border-color: var(--card-border-hover);
-}
-
-.app-icon {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: inherit;
-}
-
-.app-icon-fallback {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--accent-color);
-  text-transform: uppercase;
-}
-
-.app-name {
-  font-size: 0.775rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  text-align: center;
-  max-width: 84px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: 1.25;
-  letter-spacing: 0.01em;
-}
-
-@media (max-width: 480px) {
-  .apps-popover {
-    width: calc(100vw - 32px);
-    right: -50px;
-  }
+md-app-drawer-item {
+  --md-sys-shape-corner-medium: var(--md-sys-shape-corner-medium);
+  --md-sys-color-on-surface: var(--text-primary);
+  --md-sys-color-primary: var(--accent-color);
 }

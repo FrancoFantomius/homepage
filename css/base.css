@@ -1,10 +1,25 @@
-/* Base & Global Styles */
+/* Base & Global Styles - Material Design 3 */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
   margin: 0;
   padding: 0;
+  border: 0;
 }
 
 html,
@@ -21,10 +36,10 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom Sleek Scrollbar */
+/* Custom Sleek M3 Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -32,58 +47,17 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--card-border);
-  border-radius: var(--radius-full);
+  background: var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-full);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted);
+  background: var(--md-sys-color-outline);
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--card-border) transparent;
-}
-
-/* Background Ambient Glow */
-.bg-effects {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-  opacity: 1;
-  transition: opacity var(--transition-speed) ease;
-}
-
-.bg-effects.hidden {
-  opacity: 0;
-}
-
-.glow-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(90px);
-  will-change: transform;
-}
-
-.glow-orb-1 {
-  top: 10%;
-  left: 20%;
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, var(--glow-1) 0%, transparent 70%);
-}
-
-.glow-orb-2 {
-  bottom: 15%;
-  right: 18%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, var(--glow-2) 0%, transparent 70%);
+  scrollbar-color: var(--md-sys-color-outline-variant) transparent;
 }
 
 /* App Container */
@@ -107,17 +81,9 @@ body {
   width: 100%;
 }
 
-.date-badge {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  background: var(--bg-surface);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 0.35rem 0.85rem;
-  border-radius: var(--radius-full);
-  border: 1px solid var(--card-border);
-  letter-spacing: 0.02em;
+.nav-left {
+  display: flex;
+  align-items: center;
 }
 
 .nav-right {
@@ -126,29 +92,32 @@ body {
   gap: 0.5rem;
 }
 
+/* M3 Standard Icon Button */
 .icon-btn {
   background: transparent;
   color: var(--text-secondary);
   border: none;
-  border-radius: var(--radius-full);
+  border-radius: var(--md-sys-shape-corner-full);
   width: 40px;
   height: 40px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all var(--transition-speed) var(--transition-bounce);
+  position: relative;
+  transition: background-color var(--transition-speed) var(--transition-bounce),
+              color var(--transition-speed) var(--transition-bounce),
+              transform var(--transition-speed) var(--transition-bounce);
 }
 
 .icon-btn:hover,
 .icon-btn[aria-expanded="true"] {
   background: var(--bg-surface-hover);
   color: var(--text-primary);
-  transform: translateY(-1px);
 }
 
 .icon-btn:active {
-  transform: translateY(1px);
+  transform: scale(0.94);
 }
 
 /* Icon Images */
@@ -193,18 +162,22 @@ body {
 
 .kbd-hint {
   font-size: 0.775rem;
+  font-weight: 500;
   color: var(--text-muted);
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.4rem;
+  letter-spacing: 0.1px;
 }
 
 kbd {
   font-family: var(--font-mono);
   background: var(--kbd-bg);
   border: 1px solid var(--kbd-border);
-  padding: 0.15rem 0.4rem;
-  border-radius: 4px;
-  font-size: 0.725rem;
+  padding: 0.2rem 0.45rem;
+  border-radius: var(--md-sys-shape-corner-extra-small);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
