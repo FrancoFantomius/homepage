@@ -1,99 +1,138 @@
 # Homepage
 
-An ultra-fast, lightweight, customizable, and privacy-respecting browser homepage and startpage built with vanilla web technologies.
+A fast, lightweight, privacy-respecting browser homepage and new-tab startpage crafted with modern web standards and Material Design 3.
+
+---
 
 ## Overview
 
-Homepage provides a clean, responsive new tab experience designed for speed and productivity. It features instant search provider switching, quick access bookmark management, multiple themes, multilingual localization, keyboard shortcuts, and Progressive Web App (PWA) offline capabilities.
+**Homepage** delivers a clean, responsive, and distraction-free startpage experience designed for speed and productivity. It combines instant multi-engine search, quick-access bookmark management, an integrated apps launcher, customizable clock and greetings, full internationalization across 9 languages, and offline PWA support — all running 100% client-side with zero tracking or external telemetry.
+
+---
 
 ## Features
 
-- Fast and lightweight: Built with vanilla HTML, CSS, and modern JavaScript without heavy runtime frameworks.
-- Multiple search engines: Easily switch between privacy-focused and mainstream search engines (Startpage, DuckDuckGo, Brave Search, Google, Bing, Ecosia, Qwant).
-- Customizable shortcuts: Add, edit, remove, and reorder quick-access bookmarks with automatic favicon fetching or custom icons.
-- Digital clock and greeting: Time display supporting 12-hour and 24-hour formats, optional seconds, dynamic time-based greetings, and date badges.
-- Themes and appearance: Dark mode, Light mode, and System Auto detection.
-- Multilingual support: Fully localized across 9 languages (English, German, Spanish, French, Italian, Japanese, Portuguese, Russian, Chinese) with automatic browser locale detection.
-- PWA and offline ready: Service worker caching and web app manifest for standalone desktop/mobile installation and offline support.
-- Keyboard navigation: Full keyboard control for searching and shortcut launching.
-- Privacy-oriented: Configuration and bookmarks are stored strictly in your browser's local storage.
+- **Ultra-Fast and Lightweight**: Built with modern ES modules, vanilla JavaScript, and [Material Design 3](https://github.com/FrancoFantomius/material-components) Web Components without heavy runtime framework overhead.
+- **Multi-Engine Search**: Switch seamlessly between privacy-focused and mainstream search engines (Startpage, DuckDuckGo, Brave Search, Google, Bing, Ecosia, Qwant). Direct URL and domain inputs navigate directly without querying a search engine.
+- **Quick Access Bookmarks**: Add, edit, remove, and reorder bookmarks with automatic favicon fetching or custom icon URLs.
+- **App Drawer**: Built-in launcher providing one-click access to the Franco Fantomius app ecosystem (Calculator, Melo, Noten, Scriben, Maps).
+- **Digital Clock and Live Greetings**: Configurable 12-hour or 24-hour time format, optional live seconds display, dynamic time-of-day greetings, and an active date badge.
+- **Material Design 3 and Themes**: Full support for System Auto theme detection, Dark Mode, and Light Mode with tokenized CSS variables.
+- **Multilingual (i18n)**: Fully localized across 9 languages (English, German, Spanish, French, Italian, Japanese, Portuguese, Russian, Chinese) with automatic browser language detection and in-app language switching.
+- **Offline and PWA Ready**: Installable as a standalone Progressive Web App on desktop and mobile. Pre-cached core assets and smart favicon caching via Service Worker.
+- **Keyboard Navigation**: Complete keyboard accessibility for instant searching, launching bookmarks with number keys, and dialog management.
+- **100% Privacy**: All bookmarks, preferences, and state are stored strictly in your browser's local storage (`localStorage`). No analytics, telemetry, or remote tracking.
+
+---
 
 ## Keyboard Shortcuts
 
-| Shortcut | Description |
-| --- | --- |
-| `/` | Focus and select search input |
-| `1` - `9` | Launch bookmark shortcuts 1 through 9 |
-| `Alt + 1` - `9` | Launch bookmark shortcuts 1 through 9 (works even when search input is focused) |
-| `Escape` | Close open modals, dismiss context menus, or unfocus search input |
-| `Enter` | Submit search |
+| Shortcut | Action | Description |
+| :--- | :--- | :--- |
+| <kbd>/</kbd> | **Focus Search** | Immediately focuses and selects the search input |
+| <kbd>1</kbd> – <kbd>9</kbd> | **Launch Bookmark** | Opens the corresponding bookmark shortcut (1 to 9) |
+| <kbd>Alt</kbd> + <kbd>1</kbd> – <kbd>9</kbd> | **Quick Launch** | Opens bookmark shortcuts even when the search bar or an input is focused |
+| <kbd>Enter</kbd> | **Submit Search** | Executes search query or navigates directly if a URL is entered |
+| <kbd>Escape</kbd> | **Close / Dismiss** | Closes active dialogs, dismisses context menus, closes app drawer, or unfocuses search |
+
+---
 
 ## Supported Search Engines
 
-- Startpage (default)
-- Google
-- DuckDuckGo
-- Brave Search
-- Bing
-- Ecosia
-- Qwant
+| Engine | Query URL | Privacy Focus | Default |
+| :--- | :--- | :---: | :---: |
+| **Startpage** | `https://www.startpage.com/do/dsearch` | Yes | Yes |
+| **DuckDuckGo** | `https://duckduckgo.com/` | Yes | No |
+| **Brave Search** | `https://search.brave.com/search` | Yes | No |
+| **Google** | `https://www.google.com/search` | No | No |
+| **Bing** | `https://www.bing.com/search` | No | No |
+| **Ecosia** | `https://www.ecosia.org/search` | Yes (Eco-friendly) | No |
+| **Qwant** | `https://www.qwant.com/` | Yes | No |
+
+---
 
 ## Supported Languages
 
-- English (`en`)
-- German (`de`)
-- Spanish (`es`)
-- French (`fr`)
-- Italian (`it`)
-- Japanese (`ja`)
-- Portuguese (`pt`)
-- Russian (`ru`)
-- Chinese (`zh`)
+| Code | Language | Native Name |
+| :---: | :--- | :--- |
+| `en` | English | English (Default) |
+| `de` | German | Deutsch |
+| `es` | Spanish | Español |
+| `fr` | French | Français |
+| `it` | Italian | Italiano |
+| `ja` | Japanese | 日本語 |
+| `pt` | Portuguese | Português |
+| `ru` | Russian | Русский |
+| `zh` | Chinese | 中文 |
+
+---
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js (version 18 or higher recommended)
-- npm
+- **Node.js** (v18.0.0 or higher recommended)
+- **npm** (v9.0.0 or higher)
 
 ### Installation
 
-Clone the repository and install dependencies:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/FrancoFantomius/homepage.git
+   cd homepage
+   ```
 
-```bash
-git clone https://github.com/FrancoFantomius/homepage.git
-cd homepage
-npm install
-```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
 ### Local Development
 
-Because the project uses standard ES modules and a Service Worker, serve the root directory using any local web server:
+Because the application uses native ES modules and Service Workers, serve the root directory using any local HTTP server:
 
 ```bash
+# Using npx serve
 npx serve .
+
+# Or using Python 3
+python -m http.server 8080
 ```
 
-Alternatively, you can open the project with live server extensions in your editor.
+Open `http://localhost:3000` (or the port specified by your local server) in your browser.
 
-### Production Build
+---
 
-Run the build script to compile and minify CSS, bundle JavaScript modules, inline translation dictionaries, and generate the distribution files:
+## Production Build
+
+The project includes an optimized custom build pipeline (`build.mjs`) powered by `esbuild` to produce a tree-shaken, minified, production-ready distribution:
 
 ```bash
 npm run build
 ```
 
-All production-ready assets are generated in the `build/` directory:
-- `build/index.html`: Optimized and minified HTML entry point
-- `build/styles.css`: Minified and concatenated CSS stylesheet
-- `build/app.js`: Bundled, tree-shaken, and minified JavaScript bundle with embedded translations
-- `build/sw.js`: Optimized and minified production Service Worker
-- `build/img/`: Optimized and minified SVG / graphic assets
-- `build/manifest.webmanifest`: Minified Web application manifest
-- `build/langs/`: Minified language dictionaries
-- `build/.nojekyll`: GitHub Pages static asset routing support
+### Build Process Details
+
+- **Language Inlining**: Dictionaries from `langs/*.json` are inlined directly into `build/app.js` to eliminate network roundtrips for translations.
+- **CSS Concatenation and Minification**: All modular CSS files (`css/*.css`) are aggregated in dependency order and minified into `build/styles.css`.
+- **JS Bundling and Tree-Shaking**: ES modules and `@francofantomius/material-components` are bundled, tree-shaken, and minified into `build/app.js`.
+- **HTML and Asset Optimization**: Removes import maps, optimizes inline bootstrap scripts, minifies SVG assets, and outputs a production Service Worker (`build/sw.js`) with an updated asset cache manifest.
+
+### Output Structure (`build/`)
+
+```
+build/
+├── index.html              # Minified HTML entry point
+├── styles.css              # Minified, consolidated stylesheet
+├── app.js                  # Tree-shaken, bundled JavaScript application
+├── sw.js                   # Production Service Worker
+├── manifest.webmanifest    # Minified Web App Manifest
+├── img/                    # Minified SVG icons and graphics
+├── langs/                  # Minified fallback language files
+└── .nojekyll               # GitHub Pages static asset routing support
+```
+
+---
 
 ## Project Structure
 
@@ -101,46 +140,71 @@ All production-ready assets are generated in the `build/` directory:
 homepage/
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml          # GitHub Pages automated deployment workflow
+│       └── deploy.yml              # Automated GitHub Actions deployment workflow
 ├── css/
-│   ├── base.css                # Base layout and global elements
-│   ├── bookmarks.css           # Bookmarks grid, cards, and context menu styles
-│   ├── clock.css               # Digital clock and greeting styles
-│   ├── modal.css               # Modal overlays and forms
-│   ├── responsive.css          # Breakpoints and responsive design
-│   ├── search.css              # Search bar and input styling
-│   ├── settings.css            # Settings modal controls
-│   ├── styles.css              # Main stylesheet aggregator
-│   └── variables.css           # CSS custom properties and color palettes
-├── img/                        # SVG icons and graphics
+│   ├── apps.css                    # App launcher drawer styling
+│   ├── base.css                    # Base layout, typography, and container styles
+│   ├── bookmarks.css               # Bookmarks grid, cards, context menus, and drag-and-drop
+│   ├── clock.css                   # Digital clock and live greeting styles
+│   ├── modal.css                   # Modal overlays and bookmark form styling
+│   ├── responsive.css              # Mobile and tablet media queries
+│   ├── search.css                  # Search bar container and input styling
+│   ├── settings.css                # Settings dialog and options styling
+│   ├── styles.css                  # Development stylesheet aggregator
+│   └── variables.css               # CSS custom properties, M3 color tokens, and themes
+├── img/                            # Local vector SVG icons and graphics
 ├── js/
-│   ├── bookmarks.js            # Bookmark management and drag/drop reordering
-│   ├── clock.js                # Clock rendering and live time updates
-│   ├── i18n.js                 # Localization engine and dictionary loader
-│   ├── modal.js                # Modal opening, closing, and focus trapping
-│   ├── pwa.js                  # Service worker registration and PWA logic
-│   ├── search.js               # Search engine switching and URL execution
-│   ├── settings.js             # Settings configuration UI and events
-│   ├── shortcuts.js            # Global keyboard shortcut listeners
-│   ├── state.js                # State management and localStorage synchronization
-│   └── theme.js                # Theme switching and DOM theme attributes
-├── langs/                      # Translation JSON files for each supported language
-├── app.js                      # Main application bootstrap script
-├── build.mjs                   # Custom build, tree-shaking, and bundling pipeline
-├── index.html                  # Main application markup
-├── LICENSE                     # MIT License
-├── manifest.webmanifest        # PWA manifest
-├── package.json                # Project dependencies and npm scripts
-├── README.md                   # Project documentation
-└── sw.js                       # Service worker implementation
+│   ├── apps.js                     # App drawer and ecosystem shortcuts
+│   ├── bookmarks.js                # Bookmark CRUD, persistence, and drag-and-drop
+│   ├── clock.js                    # Clock tick scheduler, greetings, and date chips
+│   ├── i18n.js                     # Internationalization engine and browser locale detector
+│   ├── modal.js                    # Modal controller and focus trapping
+│   ├── pwa.js                      # Service Worker registration and PWA installer
+│   ├── search.js                   # Search engine handling and URL execution
+│   ├── settings.js                 # Settings UI listeners and configuration applicator
+│   ├── shortcuts.js                # Global keyboard shortcut event handlers
+│   ├── state.js                    # State persistence and localStorage synchronization
+│   └── theme.js                    # Theme management (Light / Dark / Auto)
+├── langs/                          # Localized translation JSON dictionaries
+├── app.js                          # Main application bootstrap and Material Components init
+├── build.mjs                       # Custom build, tree-shaking, and bundling pipeline
+├── index.html                      # Main application markup
+├── LICENSE                         # MIT License
+├── manifest.webmanifest            # Progressive Web App manifest
+├── package.json                    # Project configuration and dependencies
+├── README.md                       # Project documentation
+└── sw.js                           # Service Worker implementation
 ```
+
+---
+
+## Configuration and Storage
+
+All user configuration and bookmarks are persisted locally in the browser via `localStorage`:
+
+| Key | Description | Default |
+| :--- | :--- | :--- |
+| `hp_config` | User preferences (theme, language, search engine, 24h format, show seconds, greetings, date) | `{"theme":"auto","language":"auto","searchEngine":"startpage",...}` |
+| `hp_bookmarks` | User shortcuts array (id, title, url, custom icon) | Default 8 quick access shortcuts |
+
+---
 
 ## Deployment
 
-A GitHub Actions workflow is included in `.github/workflows/deploy.yml` to automatically build and deploy the application to GitHub Pages upon pushing to the `main` or `master` branch.
+### Automated Deployment (GitHub Pages)
 
-To deploy manually, point any static file host (such as GitHub Pages, Netlify, Vercel, or Cloudflare Pages) to the `build/` output directory.
+The repository includes a GitHub Actions workflow in `.github/workflows/deploy.yml` that builds and deploys the project to GitHub Pages automatically on push to the `main` branch.
+
+### Manual Deployment
+
+Deploy the contents of the `build/` directory to any static web host:
+- **GitHub Pages**
+- **Cloudflare Pages**
+- **Vercel**
+- **Netlify**
+
+---
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is open source and available under the [MIT License](LICENSE).
