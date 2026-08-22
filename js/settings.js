@@ -153,7 +153,7 @@ export function applyConfig() {
 
   // Toggle widgets visibility
   if (currentDateEl) {
-    currentDateEl.style.display = state.config.showDate ? 'inline-block' : 'none';
+    currentDateEl.style.display = state.config.showDate ? '' : 'none';
   }
   if (greetingText) {
     greetingText.style.display = state.config.showGreeting ? 'inline-block' : 'none';

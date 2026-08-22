@@ -13,10 +13,16 @@ import { initModals } from './js/modal.js';
 import { initSettings, applyConfig } from './js/settings.js';
 import { initShortcuts } from './js/shortcuts.js';
 import { initPWA } from './js/pwa.js';
-import '@francofantomius/material-components';
-import '@francofantomius/material-components/switch';
-import '@francofantomius/material-components/segmented-button';
+import '@francofantomius/material-components/button';
+import '@francofantomius/material-components/icon-button';
+import '@francofantomius/material-components/icon';
+import '@francofantomius/material-components/chip';
+import '@francofantomius/material-components/app-drawer';
 import '@francofantomius/material-components/search-bar';
+import '@francofantomius/material-components/segmented-button';
+import '@francofantomius/material-components/switch';
+import '@francofantomius/material-components/dialog';
+import '@francofantomius/material-components/radio';
 
 // Map local downloaded SVGs for Material Components md-icon without external fonts
 const MdIcon = customElements.get('md-icon');

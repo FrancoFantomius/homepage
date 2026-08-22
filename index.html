@@ -24,10 +24,16 @@
   <script type="importmap">
     {
       "imports": {
-        "@francofantomius/material-components": "./node_modules/@francofantomius/material-components/dist/index.js",
-        "@francofantomius/material-components/switch": "./node_modules/@francofantomius/material-components/dist/components/switch/switch.js",
-        "@francofantomius/material-components/segmented-button": "./node_modules/@francofantomius/material-components/dist/components/segmented-button/segmented-button.js",
+        "@francofantomius/material-components/button": "./node_modules/@francofantomius/material-components/dist/components/button/button.js",
+        "@francofantomius/material-components/icon-button": "./node_modules/@francofantomius/material-components/dist/components/icon-button/icon-button.js",
+        "@francofantomius/material-components/icon": "./node_modules/@francofantomius/material-components/dist/components/icon/icon.js",
+        "@francofantomius/material-components/chip": "./node_modules/@francofantomius/material-components/dist/components/chip/chip.js",
+        "@francofantomius/material-components/app-drawer": "./node_modules/@francofantomius/material-components/dist/components/app-drawer/app-drawer.js",
         "@francofantomius/material-components/search-bar": "./node_modules/@francofantomius/material-components/dist/components/search-bar/search-bar.js",
+        "@francofantomius/material-components/segmented-button": "./node_modules/@francofantomius/material-components/dist/components/segmented-button/segmented-button.js",
+        "@francofantomius/material-components/switch": "./node_modules/@francofantomius/material-components/dist/components/switch/switch.js",
+        "@francofantomius/material-components/dialog": "./node_modules/@francofantomius/material-components/dist/components/dialog/dialog.js",
+        "@francofantomius/material-components/radio": "./node_modules/@francofantomius/material-components/dist/components/radio/radio.js",
         "@francofantomius/material-components/": "./node_modules/@francofantomius/material-components/",
         "lit": "./node_modules/lit/index.js",
         "lit/": "./node_modules/lit/",
@@ -51,7 +57,7 @@
     <!-- Header / Top Bar -->
     <header class="top-nav">
       <div class="nav-left">
-        <div class="date-badge" id="current-date" data-i18n="general.today">Today</div>
+        <md-chip id="current-date" data-i18n="general.today">Today</md-chip>
       </div>
       <div class="nav-right">
         <!-- App Launcher / Material App Drawer -->

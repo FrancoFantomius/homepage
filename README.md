@@ -85,13 +85,15 @@ Run the build script to compile and minify CSS, bundle JavaScript modules, inlin
 npm run build
 ```
 
-All production-ready assets are generated in the `dist/` directory:
-- `dist/index.html`: Optimized HTML entry point
-- `dist/styles.css`: Minified and concatenated CSS stylesheet
-- `dist/app.js`: Bundled and minified JavaScript bundle with embedded translations
-- `dist/sw.js`: Optimized production Service Worker
-- `dist/img/`: Application icons and graphical assets
-- `dist/manifest.webmanifest`: Web application manifest
+All production-ready assets are generated in the `build/` directory:
+- `build/index.html`: Optimized and minified HTML entry point
+- `build/styles.css`: Minified and concatenated CSS stylesheet
+- `build/app.js`: Bundled, tree-shaken, and minified JavaScript bundle with embedded translations
+- `build/sw.js`: Optimized and minified production Service Worker
+- `build/img/`: Optimized and minified SVG / graphic assets
+- `build/manifest.webmanifest`: Minified Web application manifest
+- `build/langs/`: Minified language dictionaries
+- `build/.nojekyll`: GitHub Pages static asset routing support
 
 ## Project Structure
 
@@ -124,7 +126,7 @@ homepage/
 │   └── theme.js                # Theme switching and DOM theme attributes
 ├── langs/                      # Translation JSON files for each supported language
 ├── app.js                      # Main application bootstrap script
-├── build.mjs                   # Custom build and bundling pipeline
+├── build.mjs                   # Custom build, tree-shaking, and bundling pipeline
 ├── index.html                  # Main application markup
 ├── LICENSE                     # MIT License
 ├── manifest.webmanifest        # PWA manifest
@@ -137,7 +139,7 @@ homepage/
 
 A GitHub Actions workflow is included in `.github/workflows/deploy.yml` to automatically build and deploy the application to GitHub Pages upon pushing to the `main` or `master` branch.
 
-To deploy manually, point any static file host (such as GitHub Pages, Netlify, Vercel, or Cloudflare Pages) to the `dist/` output directory.
+To deploy manually, point any static file host (such as GitHub Pages, Netlify, Vercel, or Cloudflare Pages) to the `build/` output directory.
 
 ## License
 
